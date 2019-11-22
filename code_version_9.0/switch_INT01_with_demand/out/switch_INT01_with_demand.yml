@@ -1,0 +1,1062 @@
+##########################################
+# Header instance definitions            #
+##########################################
+
+arp:
+    fields:
+    -   hardwareType: 16
+    -   protocoloType: 16
+    -   hardwareAddressLength: 8
+    -   protocolAddressLength: 8
+    -   opcode: 16
+    -   senderHardwareAddress: 48
+    -   senderProtocolAddress: 32
+    -   targetHardwareAddress: 48
+    -   targetProtocolAddress: 32
+    type: header
+
+egressTimestamp:
+    fields:
+    -   int_egressTimestamp: 64
+    type: header
+
+errors:
+    type: enum
+    values:
+    -   NoError: 1
+    -   PacketTooShort: 2
+    -   NoMatch: 3
+    -   StackOutOfBounds: 4
+    -   HeaderTooShort: 5
+    -   ParserTimeout: 6
+
+ethernet:
+    fields:
+    -   destinationAddress: 48
+    -   sourceAddress: 48
+    -   etherType: 16
+    type: header
+
+hopINT:
+    fields:
+    -   int_version: 8
+    -   int_replication: 8
+    -   int_copy: 1
+    -   int_exceeded: 1
+    -   int_rsvd_1: 8
+    -   int_ins_cnt: 8
+    -   int_max_hops: 8
+    -   int_total_hops: 8
+    -   int_instruction_bit: 8
+    -   int_rsvd_instructions: 6
+    type: header
+
+hop_latency:
+    fields:
+    -   int_hop_latency: 64
+    type: header
+
+ingressTimestamp:
+    fields:
+    -   int_ingressTimestamp: 64
+    type: header
+
+int_ingress_egress_ports:
+    fields:
+    -   int_ingress_id: 16
+    -   int_egress_id: 16
+    type: header
+
+intrinsic_metadata:
+    fields:
+    -   ingress_global_tstamp: 64
+    -   current_global_tstamp: 64
+    type: header
+
+ipv4:
+    calculated_fields:
+    -   condition: valid(ipv4)
+        field: headerChecksum
+        func: calc
+        type: update
+    fields:
+    -   version: 4
+    -   headerLength: 4
+    -   typeServiceDiffServ: 8
+    -   totalLength: 16
+    -   identification: 16
+    -   fragmentOffset: 16
+    -   timeToLive: 8
+    -   protocol: 8
+    -   headerChecksum: 16
+    -   sourceAddress: 32
+    -   destinationAddress: 32
+    type: header
+
+report:
+    fields:
+    -   f_version: 8
+    -   f_next_proto: 8
+    -   f_drop: 1
+    -   f_queue: 1
+    -   f_flow: 1
+    -   f_rsvd: 16
+    -   f_hw_id: 8
+    -   f_seq_num: 32
+    -   f_ingress_ts: 64
+    -   _padding: 5
+    type: header
+
+report_ethernet:
+    fields:
+    -   destinationAddress: 48
+    -   sourceAddress: 48
+    -   etherType: 16
+    type: header
+
+report_ipv4:
+    fields:
+    -   version: 4
+    -   headerLength: 4
+    -   typeServiceDiffServ: 8
+    -   totalLength: 16
+    -   identification: 16
+    -   fragmentOffset: 16
+    -   timeToLive: 8
+    -   protocol: 8
+    -   headerChecksum: 16
+    -   sourceAddress: 32
+    -   destinationAddress: 32
+    type: header
+
+report_udp:
+    fields:
+    -   sourcePort: 16
+    -   destinationPort: 16
+    -   lengthUDP: 16
+    -   checksum: 16
+    type: header
+
+shimINT:
+    fields:
+    -   shim_type: 8
+    -   shim_reserved1: 8
+    -   shim_length: 8
+    -   shim_rsvd2: 8
+    type: header
+
+standard_metadata:
+    fields:
+    -   ingress_port: 16
+    -   packet_length: 14
+    -   egress_spec: 16
+    -   egress_port: 16
+    -   egress_instance: 10
+    -   instance_type: 4
+    -   clone_spec: 32
+    -   parser_error_location: 8
+    -   parser_status: 3
+    -   checksum_error: 1
+    type: metadata
+
+switch_id:
+    fields:
+    -   int_switch_id: 32
+    type: header
+
+switch_local:
+    fields:
+    -   switch_id: 16
+    -   port_in: 16
+    -   port_out: 16
+    -   shimINTlength: 16
+    -   instruction: 8
+    -   ingresststamp: 64
+    -   egresststamp: 64
+    type: header
+
+tailINT:
+    fields:
+    -   tail_header: 32
+    -   tail_proto: 8
+    -   tail_port: 16
+    -   tail_dscp: 8
+    type: header
+
+tcp:
+    fields:
+    -   sourcePort: 16
+    -   destinationPort: 16
+    -   sequenceNumber: 32
+    -   acknowledgementNumber: 32
+    -   dataOffset: 4
+    -   reserved: 4
+    -   flags: 8
+    -   windowSize: 16
+    -   checksum: 16
+    -   urgentPointers: 16
+    type: header
+
+udp:
+    fields:
+    -   sourcePort: 16
+    -   destinationPort: 16
+    -   lengthUDP: 16
+    -   checksum: 16
+    type: header
+
+
+##########################################
+# Field list definitions                 #
+##########################################
+
+field_list_1:
+    fields:
+    - ipv4.version
+    - ipv4.headerLength
+    - ipv4.typeServiceDiffServ
+    - ipv4.totalLength
+    - ipv4.identification
+    - ipv4.fragmentOffset
+    - ipv4.timeToLive
+    - ipv4.protocol
+    - ipv4.sourceAddress
+    - ipv4.destinationAddress
+    type: field_list
+
+
+##########################################
+# Field list calculations                #
+##########################################
+
+calc:
+    algorithm: csum16
+    inputs:
+    - field_list_1
+    output_width: 16
+    type: field_list_calculation
+
+
+##########################################
+# Parse states                           #
+##########################################
+
+parse_arp:
+    implementation: extract(arp);
+    select_value:
+    - arp.hardwareType
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 458
+    type: parse_state
+
+parse_ipv4:
+    implementation: extract(ipv4);
+    select_value:
+    - ipv4.protocol
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 470
+    type: parse_state
+
+parse_shimINT:
+    implementation: |-
+        extract(shimINT);
+        extract(hopINT);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 517
+    type: parse_state
+
+parse_tcp:
+    implementation: extract(tcp);
+    select_value:
+    - ipv4.typeServiceDiffServ
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 483
+    type: parse_state
+
+parse_udp:
+    implementation: extract(udp);
+    select_value:
+    - ipv4.typeServiceDiffServ
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 495
+    type: parse_state
+
+start:
+    implementation: extract(ethernet);
+    select_value:
+    - ethernet.etherType
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 438
+    type: parse_state
+
+
+##########################################
+# Parser                                 #
+##########################################
+
+parser:
+    format: dot
+    implementation: |-
+        digraph {
+            start -> parse_arp [value="0x0806", mask="none", order="0"]
+            start -> parse_ipv4 [value="0x0800", mask="none", order="1"]
+            start -> exit [value="default", mask="none", order="2"]
+            parse_arp -> parse_ipv4 [value="0x0800", mask="none", order="0"]
+            parse_arp -> exit [value="default", mask="none", order="1"]
+            parse_ipv4 -> parse_tcp [value="0x06", mask="none", order="0"]
+            parse_ipv4 -> parse_udp [value="0x11", mask="none", order="1"]
+            parse_ipv4 -> exit [value="default", mask="none", order="2"]
+            parse_tcp -> parse_shimINT [value="0x17", mask="none", order="0"]
+            parse_tcp -> exit [value="default", mask="none", order="1"]
+            parse_shimINT -> exit [value="default", mask="none", order="0"]
+            parse_udp -> parse_shimINT [value="0x17", mask="none", order="0"]
+            parse_udp -> exit [value="default", mask="none", order="1"]
+        }
+    start_state: start
+    type: parser
+
+
+##########################################
+# Action Expressions                     #
+##########################################
+
+_expression_action_eq128_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq128_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq128_2:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq128_3:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_2:
+    expression: ((((switch_local.egresststamp) - (switch_local.ingresststamp))) &
+        (0xffffffffffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_3:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_4:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq160_5:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_2:
+    expression: ((((switch_local.egresststamp) - (switch_local.ingresststamp))) &
+        (0xffffffffffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_3:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_4:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_5:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_6:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq184_7:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq192_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq192_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq192_2:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq192_3:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq192_4:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_2:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_3:
+    expression: ((((switch_local.egresststamp) - (switch_local.ingresststamp))) &
+        (0xffffffffffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_4:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_5:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq224_6:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_2:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_3:
+    expression: ((((switch_local.egresststamp) - (switch_local.ingresststamp))) &
+        (0xffffffffffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_4:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_5:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_6:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq240_7:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_0:
+    expression: ((switch_local.switch_id) & (0xffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_1:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_2:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_3:
+    expression: ((((switch_local.egresststamp) - (switch_local.ingresststamp))) &
+        (0xffffffffffffffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_4:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_5:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_6:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_7:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq248_8:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq88_0:
+    expression: ((((shimINT.shim_length) + (0x04))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq88_1:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq88_2:
+    expression: ((((shimINT.shim_length) + (0x08))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq88_3:
+    expression: ((((hopINT.int_total_hops) + (0x01))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+_expression_action_eq88_4:
+    expression: ((((ipv4.totalLength) + (((shimINT.shim_length) & (0xffff))))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_add_int_source_0:
+    expression: ((((((((ipv4.totalLength) + (0x0008))) & (0xffff))) + (0x0004))) &
+        (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_add_int_source_1:
+    expression: ((((((((udp.lengthUDP) + (0x0008))) & (0xffff))) + (0x0004))) & (0xffff))
+    format: bracketed_expr
+    type: expression
+
+_expression_ipv4_forward_0:
+    expression: ((((ipv4.timeToLive) + (0xff))) & (0xff))
+    format: bracketed_expr
+    type: expression
+
+
+##########################################
+# Action sets                            #
+##########################################
+
+egress::action_eq128:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq128_0);
+        modify_field(shimINT.shim_length, _expression_action_eq128_1);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq128_2);
+        modify_field(ipv4.totalLength, _expression_action_eq128_3);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 876
+    type: action
+
+egress::action_eq160:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq160_0);
+        modify_field(shimINT.shim_length, _expression_action_eq160_1);
+        modify_field(switch_local.egresststamp, intrinsic_metadata.current_global_tstamp);
+        add_header(hop_latency);
+        modify_field(hop_latency.int_hop_latency, _expression_action_eq160_2);
+        modify_field(shimINT.shim_length, _expression_action_eq160_3);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq160_4);
+        modify_field(ipv4.totalLength, _expression_action_eq160_5);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 933
+    type: action
+
+egress::action_eq184:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq184_0);
+        modify_field(shimINT.shim_length, _expression_action_eq184_1);
+        modify_field(switch_local.egresststamp, intrinsic_metadata.current_global_tstamp);
+        add_header(hop_latency);
+        modify_field(hop_latency.int_hop_latency, _expression_action_eq184_2);
+        modify_field(shimINT.shim_length, _expression_action_eq184_3);
+        add_header(ingressTimestamp);
+        modify_field(ingressTimestamp.int_ingressTimestamp, switch_local.ingresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq184_4);
+        add_header(egressTimestamp);
+        modify_field(egressTimestamp.int_egressTimestamp, switch_local.egresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq184_5);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq184_6);
+        modify_field(ipv4.totalLength, _expression_action_eq184_7);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 943
+    type: action
+
+egress::action_eq192:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq192_0);
+        modify_field(shimINT.shim_length, _expression_action_eq192_1);
+        add_header(int_ingress_egress_ports);
+        modify_field(int_ingress_egress_ports.int_ingress_id, switch_local.port_in);
+        modify_field(int_ingress_egress_ports.int_egress_id, switch_local.port_out);
+        modify_field(shimINT.shim_length, _expression_action_eq192_2);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq192_3);
+        modify_field(ipv4.totalLength, _expression_action_eq192_4);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 884
+    type: action
+
+egress::action_eq224:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq224_0);
+        modify_field(shimINT.shim_length, _expression_action_eq224_1);
+        add_header(int_ingress_egress_ports);
+        modify_field(int_ingress_egress_ports.int_ingress_id, switch_local.port_in);
+        modify_field(int_ingress_egress_ports.int_egress_id, switch_local.port_out);
+        modify_field(shimINT.shim_length, _expression_action_eq224_2);
+        modify_field(switch_local.egresststamp, intrinsic_metadata.current_global_tstamp);
+        add_header(hop_latency);
+        modify_field(hop_latency.int_hop_latency, _expression_action_eq224_3);
+        modify_field(shimINT.shim_length, _expression_action_eq224_4);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq224_5);
+        modify_field(ipv4.totalLength, _expression_action_eq224_6);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 893
+    type: action
+
+egress::action_eq240:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq240_0);
+        modify_field(shimINT.shim_length, _expression_action_eq240_1);
+        add_header(int_ingress_egress_ports);
+        modify_field(int_ingress_egress_ports.int_ingress_id, switch_local.port_in);
+        modify_field(int_ingress_egress_ports.int_egress_id, switch_local.port_out);
+        modify_field(shimINT.shim_length, _expression_action_eq240_2);
+        modify_field(switch_local.egresststamp, intrinsic_metadata.current_global_tstamp);
+        add_header(hop_latency);
+        modify_field(hop_latency.int_hop_latency, _expression_action_eq240_3);
+        modify_field(shimINT.shim_length, _expression_action_eq240_4);
+        add_header(ingressTimestamp);
+        modify_field(ingressTimestamp.int_ingressTimestamp, switch_local.ingresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq240_5);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq240_6);
+        modify_field(ipv4.totalLength, _expression_action_eq240_7);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 903
+    type: action
+
+egress::action_eq248:
+    implementation: |-
+        add_header(switch_id);
+        modify_field(switch_id.int_switch_id, _expression_action_eq248_0);
+        modify_field(shimINT.shim_length, _expression_action_eq248_1);
+        add_header(int_ingress_egress_ports);
+        modify_field(int_ingress_egress_ports.int_ingress_id, switch_local.port_in);
+        modify_field(int_ingress_egress_ports.int_egress_id, switch_local.port_out);
+        modify_field(shimINT.shim_length, _expression_action_eq248_2);
+        modify_field(switch_local.egresststamp, intrinsic_metadata.current_global_tstamp);
+        add_header(hop_latency);
+        modify_field(hop_latency.int_hop_latency, _expression_action_eq248_3);
+        modify_field(shimINT.shim_length, _expression_action_eq248_4);
+        add_header(ingressTimestamp);
+        modify_field(ingressTimestamp.int_ingressTimestamp, switch_local.ingresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq248_5);
+        add_header(egressTimestamp);
+        modify_field(egressTimestamp.int_egressTimestamp, switch_local.egresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq248_6);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq248_7);
+        modify_field(ipv4.totalLength, _expression_action_eq248_8);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 915
+    type: action
+
+egress::action_eq88:
+    implementation: |-
+        add_header(int_ingress_egress_ports);
+        modify_field(int_ingress_egress_ports.int_ingress_id, switch_local.port_in);
+        modify_field(int_ingress_egress_ports.int_egress_id, switch_local.port_out);
+        modify_field(shimINT.shim_length, _expression_action_eq88_0);
+        add_header(ingressTimestamp);
+        modify_field(ingressTimestamp.int_ingressTimestamp, switch_local.ingresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq88_1);
+        add_header(egressTimestamp);
+        modify_field(egressTimestamp.int_egressTimestamp, switch_local.egresststamp);
+        modify_field(shimINT.shim_length, _expression_action_eq88_2);
+        add_header(tailINT);
+        modify_field(tailINT.tail_header, 0x000000ff);
+        modify_field(tailINT.tail_proto, ipv4.protocol);
+        modify_field(tailINT.tail_port, udp.destinationPort);
+        modify_field(tailINT.tail_dscp, ipv4.typeServiceDiffServ);
+        modify_field(hopINT.int_total_hops, _expression_action_eq88_3);
+        modify_field(ipv4.totalLength, _expression_action_eq88_4);
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 954
+    type: action
+
+ingress::act:
+    implementation: modify_field(switch_local.ingresststamp, intrinsic_metadata.ingress_global_tstamp);
+    src_filename: ''
+    src_lineno: 1
+    type: action
+
+ingress::add_int_source:
+    implementation: |-
+        modify_field(switch_local.port_out, standard_metadata.egress_spec);
+        modify_field(switch_local.port_in, standard_metadata.ingress_port);
+        modify_field(switch_local.switch_id, 0x0001);
+        add_header(shimINT);
+        modify_field(shimINT.shim_type, 0x01);
+        modify_field(shimINT.shim_reserved1, 0x00);
+        modify_field(shimINT.shim_length, 0x00);
+        modify_field(shimINT.shim_rsvd2, 0x00);
+        add_header(hopINT);
+        modify_field(hopINT.int_version, 0x08);
+        modify_field(hopINT.int_replication, 0x01);
+        modify_field(hopINT.int_copy, 0x00);
+        modify_field(hopINT.int_exceeded, 0x00);
+        modify_field(hopINT.int_rsvd_1, 0x00);
+        modify_field(hopINT.int_ins_cnt, 0x08);
+        modify_field(hopINT.int_max_hops, 0x02);
+        modify_field(hopINT.int_total_hops, 0x00);
+        modify_field(hopINT.int_instruction_bit, instruction);
+        modify_field(hopINT.int_rsvd_instructions, 0x00);
+        modify_field(ipv4.totalLength, _expression_add_int_source_0);
+        modify_field(udp.lengthUDP, _expression_add_int_source_1);
+        modify_field(ipv4.typeServiceDiffServ, 0x17);
+    parameter_list:
+    -   instruction: 8
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 710
+    type: action
+
+ingress::arp_forward:
+    implementation: |-
+        modify_field(standard_metadata.egress_spec, espec);
+        modify_field(ethernet.sourceAddress, srcmac);
+        modify_field(ethernet.destinationAddress, dstmac);
+    parameter_list:
+    -   dstmac: 48
+    -   srcmac: 48
+    -   espec: 16
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 618
+    type: action
+
+ingress::drop:
+    implementation: drop();
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 589
+    type: action
+
+ingress::ipv4_forward:
+    implementation: |-
+        modify_field(standard_metadata.egress_spec, espec);
+        modify_field(ethernet.sourceAddress, srcmac);
+        modify_field(ethernet.destinationAddress, dstmac);
+        modify_field(ipv4.timeToLive, _expression_ipv4_forward_0);
+    parameter_list:
+    -   dstmac: 48
+    -   srcmac: 48
+    -   espec: 16
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 654
+    type: action
+
+
+##########################################
+# Ingress and Egress tables              #
+##########################################
+
+egress::add_metadata:
+    allowed_actions:
+    - egress::action_eq128
+    - egress::action_eq192
+    - egress::action_eq224
+    - egress::action_eq240
+    - egress::action_eq248
+    - egress::action_eq160
+    - egress::action_eq184
+    - egress::action_eq88
+    match_on:
+        hopINT.int_instruction_bit: exact
+    max_entries: 1025
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 968
+    type: table
+
+ingress::arp_lpm:
+    allowed_actions:
+    - ingress::arp_forward
+    - ingress::drop
+    default_entry:
+        action: ingress::drop
+        const: false
+    match_on:
+        arp.targetProtocolAddress: exact
+    max_entries: 1025
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 626
+    type: table
+
+ingress::int_source:
+    allowed_actions:
+    - ingress::add_int_source
+    max_entries: 1025
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 756
+    type: table
+
+ingress::ipv4_lpm:
+    allowed_actions:
+    - ingress::ipv4_forward
+    - ingress::drop
+    default_entry:
+        action: ingress::drop
+        const: false
+    match_on:
+        ipv4.destinationAddress: exact
+    max_entries: 1025
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 666
+    type: table
+
+ingress::tbl_act:
+    allowed_actions:
+    - ingress::act
+    default_entry:
+        action: ingress::act
+        const: true
+    max_entries: 1025
+    src_filename: ''
+    src_lineno: 1
+    type: table
+
+
+##########################################
+# Ingress conditionals sets              #
+##########################################
+
+_condition_0:
+    condition: (valid(arp))
+    format: bracketed_expr
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 772
+    type: conditional
+
+_condition_1:
+    condition: (valid(ipv4))
+    format: bracketed_expr
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 776
+    type: conditional
+
+_condition_2:
+    condition: ((ipv4.typeServiceDiffServ) == (23))
+    format: bracketed_expr
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 778
+    type: conditional
+
+
+##########################################
+# Ingress control flow                   #
+##########################################
+
+ingress_flow:
+    doc: control flow for ingress
+    format: dot
+    implementation: |-
+        digraph {
+            "ingress::tbl_act" -> "_condition_0" [action = always]
+            "_condition_0" -> "_condition_1" [condition = false]
+            "_condition_0" -> "ingress::arp_lpm" [condition = true]
+            "_condition_1" -> "exit_control_flow" [condition = false]
+            "_condition_1" -> "ingress::ipv4_lpm" [condition = true]
+            "ingress::ipv4_lpm" -> "_condition_2" [action = always]
+            "_condition_2" -> "exit_control_flow" [condition = false]
+            "_condition_2" -> "ingress::int_source" [condition = true]
+            "ingress::int_source" -> "exit_control_flow" [action = always]
+            "ingress::arp_lpm" -> "exit_control_flow" [action = always]
+        }
+    start_state: ingress::tbl_act
+    type: control_flow
+
+
+##########################################
+# Egress conditionals sets               #
+##########################################
+
+_condition_3:
+    condition: (valid(hopINT))
+    format: bracketed_expr
+    src_filename: C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    src_lineno: 1014
+    type: conditional
+
+
+##########################################
+# Egress control flow                    #
+##########################################
+
+egress_flow:
+    doc: control flow for egress
+    format: dot
+    implementation: |-
+        digraph {
+            "_condition_3" -> "exit_control_flow" [condition = false]
+            "_condition_3" -> "egress::add_metadata" [condition = true]
+            "egress::add_metadata" -> "exit_control_flow" [action = always]
+        }
+    start_state: _condition_3
+    type: control_flow
+
+
+##########################################
+# Deparsers                              #
+##########################################
+
+deparser:
+    order:
+    - ethernet
+    - arp
+    - ipv4
+    - tcp
+    - udp
+    - hopINT
+    - shimINT
+    - switch_id
+    - int_ingress_egress_ports
+    - hop_latency
+    - ingressTimestamp
+    - egressTimestamp
+    - tailINT
+    type: deparser
+
+
+##########################################
+# Processor layout                       #
+##########################################
+
+layout:
+    format: list
+    implementation:
+    - parser
+    - ingress
+    - egress
+    type: processor_layout
+
+
+##########################################
+# Source info                            #
+##########################################
+
+source_info:
+    date: 2019/11/10 19:19:31
+    output_file: C:\Users\P4\NFP_SDK\switch_INT01_with_demand\out\switch_INT01_with_demand.yml
+    p4_version: '16'
+    source_files:
+    - ''
+    - C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4
+    - C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4
+    type: source_info
+
+

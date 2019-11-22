@@ -1,0 +1,1329 @@
+{
+    "generic": {
+        "tables_info": {
+            "ingress::ipv4_lpm": {
+                "max_entries": 1025, 
+                "allowed_actions": [
+                    "ingress::ipv4_forward", 
+                    "ingress::drop"
+                ], 
+                "name": "ingress::ipv4_lpm"
+            }, 
+            "egress::add_metadata": {
+                "max_entries": 1025, 
+                "allowed_actions": [
+                    "egress::action_eq128", 
+                    "egress::action_eq192", 
+                    "egress::action_eq224", 
+                    "egress::action_eq240", 
+                    "egress::action_eq248", 
+                    "egress::action_eq160", 
+                    "egress::action_eq184", 
+                    "egress::action_eq88"
+                ], 
+                "name": "egress::add_metadata"
+            }, 
+            "ingress::int_source": {
+                "max_entries": 1, 
+                "allowed_actions": [
+                    "ingress::add_int_source"
+                ], 
+                "name": "ingress::int_source"
+            }, 
+            "ingress::arp_lpm": {
+                "max_entries": 1025, 
+                "allowed_actions": [
+                    "ingress::arp_forward", 
+                    "ingress::drop"
+                ], 
+                "name": "ingress::arp_lpm"
+            }
+        }, 
+        "action_info": {
+            "ingress::act": {
+                "name": "ingress::act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "ingress::add_int_source": {
+                "name": "ingress::add_int_source", 
+                "action_data": {
+                    "instruction": {
+                        "size": 8
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq192": {
+                "name": "egress::action_eq192", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq128": {
+                "name": "egress::action_eq128", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "ingress::arp_forward": {
+                "name": "ingress::arp_forward", 
+                "action_data": {
+                    "dstmac": {
+                        "size": 48
+                    }, 
+                    "srcmac": {
+                        "size": 48
+                    }, 
+                    "espec": {
+                        "size": 16
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq184": {
+                "name": "egress::action_eq184", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq240": {
+                "name": "egress::action_eq240", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq88": {
+                "name": "egress::action_eq88", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "ingress::ipv4_forward": {
+                "name": "ingress::ipv4_forward", 
+                "action_data": {
+                    "dstmac": {
+                        "size": 48
+                    }, 
+                    "srcmac": {
+                        "size": 48
+                    }, 
+                    "espec": {
+                        "size": 16
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq248": {
+                "name": "egress::action_eq248", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq160": {
+                "name": "egress::action_eq160", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "egress::action_eq224": {
+                "name": "egress::action_eq224", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }, 
+            "ingress::drop": {
+                "name": "ingress::drop", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }
+            }
+        }
+    }, 
+    "vendor": {
+        "register_info": {}, 
+        "backend_source_info": {
+            "date": "2019/11/10 19:19:33", 
+            "source_files": "C:\\Users\\P4\\NFP_SDK\\switch_INT01_with_demand\\out\\switch_INT01_with_demand.yml"
+        }, 
+        "counters_info": {}, 
+        "meter_info": {}, 
+        "frontend_source_info": {
+            "date": "2019/11/10 19:19:31", 
+            "source_files": [
+                "", 
+                "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4", 
+                "C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4"
+            ]
+        }, 
+        "tables_info": {
+            "ingress::ipv4_lpm": {
+                "name": "ingress::ipv4_lpm", 
+                "constant_default": false, 
+                "matches": [
+                    {
+                        "field": "ipv4.destinationAddress", 
+                        "type": "exact", 
+                        "class": "field", 
+                        "header_valid": {
+                            "header": "ipv4", 
+                            "type": "header_valid", 
+                            "class": "header_valid", 
+                            "lm_layout": [
+                                {
+                                    "width": 1, 
+                                    "name": "ipv4_valid", 
+                                    "value": 1, 
+                                    "lmbitoff": 24
+                                }
+                            ]
+                        }, 
+                        "lm_layout": [
+                            {
+                                "width": 32, 
+                                "fldbitoff": 0, 
+                                "name": "destinationAddress", 
+                                "lmbitoff": 544
+                            }
+                        ]
+                    }
+                ], 
+                "allowed_actions": [
+                    "ingress::ipv4_forward", 
+                    "ingress::drop"
+                ], 
+                "id": 0, 
+                "max_entries": 1025, 
+                "data_shift": 5, 
+                "rtsym": "_pif_actiondata_table_0_ingress__ipv4_lpm", 
+                "default_entry": {
+                    "action": {
+                        "data": {}, 
+                        "type": "ingress::drop"
+                    }, 
+                    "name": "application_default"
+                }, 
+                "data_size": 32
+            }, 
+            "egress::add_metadata": {
+                "name": "egress::add_metadata", 
+                "constant_default": false, 
+                "matches": [
+                    {
+                        "field": "hopINT.int_instruction_bit", 
+                        "type": "exact", 
+                        "class": "field", 
+                        "header_valid": {
+                            "header": "hopINT", 
+                            "type": "header_valid", 
+                            "class": "header_valid", 
+                            "lm_layout": [
+                                {
+                                    "width": 1, 
+                                    "name": "hopINT_valid", 
+                                    "value": 1, 
+                                    "lmbitoff": 10
+                                }
+                            ]
+                        }, 
+                        "lm_layout": [
+                            {
+                                "width": 8, 
+                                "fldbitoff": 0, 
+                                "name": "int_instruction_bit", 
+                                "lmbitoff": 806
+                            }
+                        ]
+                    }
+                ], 
+                "allowed_actions": [
+                    "egress::action_eq128", 
+                    "egress::action_eq192", 
+                    "egress::action_eq224", 
+                    "egress::action_eq240", 
+                    "egress::action_eq248", 
+                    "egress::action_eq160", 
+                    "egress::action_eq184", 
+                    "egress::action_eq88"
+                ], 
+                "id": 1, 
+                "max_entries": 1025, 
+                "data_shift": 4, 
+                "rtsym": "_pif_actiondata_table_1_egress__add_metadata", 
+                "data_size": 16
+            }, 
+            "ingress::int_source": {
+                "name": "ingress::int_source", 
+                "constant_default": false, 
+                "matches": [], 
+                "allowed_actions": [
+                    "ingress::add_int_source"
+                ], 
+                "id": 2, 
+                "max_entries": 1, 
+                "data_shift": 4, 
+                "rtsym": "_pif_actiondata_table_2_ingress__int_source", 
+                "data_size": 16
+            }, 
+            "ingress::arp_lpm": {
+                "name": "ingress::arp_lpm", 
+                "constant_default": false, 
+                "matches": [
+                    {
+                        "field": "arp.targetProtocolAddress", 
+                        "type": "exact", 
+                        "class": "field", 
+                        "header_valid": {
+                            "header": "arp", 
+                            "type": "header_valid", 
+                            "class": "header_valid", 
+                            "lm_layout": [
+                                {
+                                    "width": 1, 
+                                    "name": "arp_valid", 
+                                    "value": 1, 
+                                    "lmbitoff": 27
+                                }
+                            ]
+                        }, 
+                        "lm_layout": [
+                            {
+                                "width": 32, 
+                                "fldbitoff": 0, 
+                                "name": "targetProtocolAddress", 
+                                "lmbitoff": 384
+                            }
+                        ]
+                    }
+                ], 
+                "allowed_actions": [
+                    "ingress::arp_forward", 
+                    "ingress::drop"
+                ], 
+                "id": 3, 
+                "max_entries": 1025, 
+                "data_shift": 5, 
+                "rtsym": "_pif_actiondata_table_3_ingress__arp_lpm", 
+                "default_entry": {
+                    "action": {
+                        "data": {}, 
+                        "type": "ingress::drop"
+                    }, 
+                    "name": "application_default"
+                }, 
+                "data_size": 32
+            }
+        }, 
+        "action_info": {
+            "ingress::act": {
+                "timeoutno_field": "", 
+                "name": "ingress::act", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 0, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "ingress::add_int_source": {
+                "timeoutno_field": "", 
+                "name": "ingress::add_int_source", 
+                "action_data": {
+                    "instruction": {
+                        "size": 8
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "instruction", 
+                        "name": "instruction", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 1, 
+                        "pad_type": "uint8_t", 
+                        "split": false, 
+                        "size": 8
+                    }, 
+                    {
+                        "pad_cnt": 3, 
+                        "pad_type": "uint8_t", 
+                        "actiondata": null, 
+                        "name": "__pif_padding", 
+                        "split": false, 
+                        "doc": "padding", 
+                        "pad_szbytes": 1, 
+                        "size": 8
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 1, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq192": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq192", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 2, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq128": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq128", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 12, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "ingress::arp_forward": {
+                "timeoutno_field": "", 
+                "name": "ingress::arp_forward", 
+                "action_data": {
+                    "dstmac": {
+                        "size": 48
+                    }, 
+                    "srcmac": {
+                        "size": 48
+                    }, 
+                    "espec": {
+                        "size": 16
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "dstmac", 
+                        "name": "dstmac_1", 
+                        "pad_cnt": 1, 
+                        "doc": "dstmac[48:16]", 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": true, 
+                        "size": 32, 
+                        "splitoff": 16
+                    }, 
+                    {
+                        "actiondata": "srcmac", 
+                        "name": "srcmac_1", 
+                        "pad_cnt": 1, 
+                        "doc": "srcmac[48:16]", 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": true, 
+                        "size": 32, 
+                        "splitoff": 16
+                    }, 
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "dstmac", 
+                        "name": "dstmac_0", 
+                        "pad_cnt": 1, 
+                        "doc": "dstmac[16:0]", 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": true, 
+                        "size": 16, 
+                        "splitoff": 0
+                    }, 
+                    {
+                        "actiondata": "srcmac", 
+                        "name": "srcmac_0", 
+                        "pad_cnt": 1, 
+                        "doc": "srcmac[16:0]", 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": true, 
+                        "size": 16, 
+                        "splitoff": 0
+                    }, 
+                    {
+                        "actiondata": "espec", 
+                        "name": "espec", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": false, 
+                        "size": 16
+                    }, 
+                    {
+                        "pad_cnt": 2, 
+                        "pad_type": "uint8_t", 
+                        "actiondata": null, 
+                        "name": "__pif_padding", 
+                        "split": false, 
+                        "doc": "padding", 
+                        "pad_szbytes": 1, 
+                        "size": 8
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 3, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq184": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq184", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 5, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq240": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq240", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 6, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq88": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq88", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 7, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "ingress::ipv4_forward": {
+                "timeoutno_field": "", 
+                "name": "ingress::ipv4_forward", 
+                "action_data": {
+                    "dstmac": {
+                        "size": 48
+                    }, 
+                    "srcmac": {
+                        "size": 48
+                    }, 
+                    "espec": {
+                        "size": 16
+                    }, 
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "dstmac", 
+                        "name": "dstmac_1", 
+                        "pad_cnt": 1, 
+                        "doc": "dstmac[48:16]", 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": true, 
+                        "size": 32, 
+                        "splitoff": 16
+                    }, 
+                    {
+                        "actiondata": "srcmac", 
+                        "name": "srcmac_1", 
+                        "pad_cnt": 1, 
+                        "doc": "srcmac[48:16]", 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": true, 
+                        "size": 32, 
+                        "splitoff": 16
+                    }, 
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "dstmac", 
+                        "name": "dstmac_0", 
+                        "pad_cnt": 1, 
+                        "doc": "dstmac[16:0]", 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": true, 
+                        "size": 16, 
+                        "splitoff": 0
+                    }, 
+                    {
+                        "actiondata": "srcmac", 
+                        "name": "srcmac_0", 
+                        "pad_cnt": 1, 
+                        "doc": "srcmac[16:0]", 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": true, 
+                        "size": 16, 
+                        "splitoff": 0
+                    }, 
+                    {
+                        "actiondata": "espec", 
+                        "name": "espec", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 2, 
+                        "pad_type": "uint16_t", 
+                        "split": false, 
+                        "size": 16
+                    }, 
+                    {
+                        "pad_cnt": 2, 
+                        "pad_type": "uint8_t", 
+                        "actiondata": null, 
+                        "name": "__pif_padding", 
+                        "split": false, 
+                        "doc": "padding", 
+                        "pad_szbytes": 1, 
+                        "size": 8
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 8, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq248": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq248", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 9, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq160": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq160", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 10, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "egress::action_eq224": {
+                "timeoutno_field": "", 
+                "name": "egress::action_eq224", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 11, 
+                "tableno_field": "__pif_table_no"
+            }, 
+            "ingress::drop": {
+                "timeoutno_field": "", 
+                "name": "ingress::drop", 
+                "action_data": {
+                    "__pif_rule_no": {
+                        "size": 32
+                    }, 
+                    "__pif_table_no": {
+                        "size": 32
+                    }
+                }, 
+                "ruleno_field": "__pif_rule_no", 
+                "action_data_packed": [
+                    {
+                        "actiondata": "__pif_rule_no", 
+                        "name": "__pif_rule_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }, 
+                    {
+                        "actiondata": "__pif_table_no", 
+                        "name": "__pif_table_no", 
+                        "pad_cnt": 1, 
+                        "doc": null, 
+                        "pad_szbytes": 4, 
+                        "pad_type": "uint32_t", 
+                        "split": false, 
+                        "size": 32
+                    }
+                ], 
+                "noeffect": false, 
+                "id": 4, 
+                "tableno_field": "__pif_table_no"
+            }
+        }, 
+        "multicast": {
+            "table_rtsym": "_pif_mcast_table", 
+            "group_count": 16, 
+            "group_size": 16
+        }, 
+        "custom_errors": {
+            "NoError": 1, 
+            "PacketTooShort": 2, 
+            "NoMatch": 3, 
+            "StackOutOfBounds": 4, 
+            "HeaderTooShort": 5, 
+            "ParserTimeout": 6
+        }, 
+        "build_uuid": [
+            661794052, 
+            2210203648, 
+            65999338, 
+            114421488
+        ], 
+        "digests_info": {}, 
+        "parser_value_set_info": {}
+    }, 
+    "p4info": {
+        "tables": [
+            {
+                "actionRefs": [
+                    {
+                        "id": 16824123
+                    }, 
+                    {
+                        "id": 16793508
+                    }, 
+                    {
+                        "id": 16800567
+                    }
+                ], 
+                "matchFields": [
+                    {
+                        "matchType": "EXACT", 
+                        "bitwidth": 32, 
+                        "id": 1, 
+                        "name": "hdr.arp.targetProtocolAddress"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "arp_lpm", 
+                    "id": 33558082, 
+                    "name": "arp_lpm"
+                }, 
+                "size": "1024"
+            }, 
+            {
+                "actionRefs": [
+                    {
+                        "id": 16786453
+                    }, 
+                    {
+                        "id": 16793508
+                    }, 
+                    {
+                        "id": 16800567
+                    }
+                ], 
+                "matchFields": [
+                    {
+                        "matchType": "EXACT", 
+                        "bitwidth": 32, 
+                        "id": 1, 
+                        "name": "hdr.ipv4.destinationAddress"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "ipv4_lpm", 
+                    "id": 33581985, 
+                    "name": "ipv4_lpm"
+                }, 
+                "size": "1024"
+            }, 
+            {
+                "actionRefs": [
+                    {
+                        "id": 16815085
+                    }, 
+                    {
+                        "id": 16800567, 
+                        "annotations": [
+                            "@defaultonly()"
+                        ]
+                    }
+                ], 
+                "preamble": {
+                    "alias": "int_source", 
+                    "id": 33582599, 
+                    "name": "int_source"
+                }, 
+                "size": "1024"
+            }, 
+            {
+                "actionRefs": [
+                    {
+                        "id": 16791370
+                    }, 
+                    {
+                        "id": 16796253
+                    }, 
+                    {
+                        "id": 16805147
+                    }, 
+                    {
+                        "id": 16785067
+                    }, 
+                    {
+                        "id": 16822950
+                    }, 
+                    {
+                        "id": 16810475
+                    }, 
+                    {
+                        "id": 16823821
+                    }, 
+                    {
+                        "id": 16796862
+                    }, 
+                    {
+                        "id": 16800567, 
+                        "annotations": [
+                            "@defaultonly()"
+                        ]
+                    }
+                ], 
+                "matchFields": [
+                    {
+                        "matchType": "EXACT", 
+                        "bitwidth": 8, 
+                        "id": 1, 
+                        "name": "hdr.hopINT.int_instruction_bit"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "add_metadata", 
+                    "id": 33602588, 
+                    "name": "add_metadata"
+                }, 
+                "size": "1024"
+            }
+        ], 
+        "actions": [
+            {
+                "preamble": {
+                    "alias": "NoAction", 
+                    "id": 16800567, 
+                    "name": "NoAction"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "drop", 
+                    "id": 16793508, 
+                    "name": "drop"
+                }
+            }, 
+            {
+                "params": [
+                    {
+                        "bitwidth": 48, 
+                        "id": 1, 
+                        "name": "dstmac"
+                    }, 
+                    {
+                        "bitwidth": 48, 
+                        "id": 2, 
+                        "name": "srcmac"
+                    }, 
+                    {
+                        "bitwidth": 16, 
+                        "id": 3, 
+                        "name": "espec"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "arp_forward", 
+                    "id": 16824123, 
+                    "name": "arp_forward"
+                }
+            }, 
+            {
+                "params": [
+                    {
+                        "bitwidth": 48, 
+                        "id": 1, 
+                        "name": "dstmac"
+                    }, 
+                    {
+                        "bitwidth": 48, 
+                        "id": 2, 
+                        "name": "srcmac"
+                    }, 
+                    {
+                        "bitwidth": 16, 
+                        "id": 3, 
+                        "name": "espec"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "ipv4_forward", 
+                    "id": 16786453, 
+                    "name": "ipv4_forward"
+                }
+            }, 
+            {
+                "params": [
+                    {
+                        "bitwidth": 8, 
+                        "id": 1, 
+                        "name": "instruction"
+                    }
+                ], 
+                "preamble": {
+                    "alias": "add_int_source", 
+                    "id": 16815085, 
+                    "name": "add_int_source"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq128", 
+                    "id": 16791370, 
+                    "name": "action_eq128"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq192", 
+                    "id": 16796253, 
+                    "name": "action_eq192"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq224", 
+                    "id": 16805147, 
+                    "name": "action_eq224"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq240", 
+                    "id": 16785067, 
+                    "name": "action_eq240"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq248", 
+                    "id": 16822950, 
+                    "name": "action_eq248"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq160", 
+                    "id": 16810475, 
+                    "name": "action_eq160"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq184", 
+                    "id": 16823821, 
+                    "name": "action_eq184"
+                }
+            }, 
+            {
+                "preamble": {
+                    "alias": "action_eq88", 
+                    "id": 16796862, 
+                    "name": "action_eq88"
+                }
+            }
+        ]
+    }
+}

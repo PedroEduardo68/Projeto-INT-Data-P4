@@ -1,0 +1,5703 @@
+{
+  "program" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+  "__meta__" : {
+    "version" : [2, 7],
+    "compiler" : "https://github.com/p4lang/p4c"
+  },
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : []
+    },
+    {
+      "name" : "report_ethernet_t",
+      "id" : 1,
+      "fields" : [
+        ["destinationAddress", 48, false],
+        ["sourceAddress", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "report_ipv4_t",
+      "id" : 2,
+      "fields" : [
+        ["version", 4, false],
+        ["headerLength", 4, false],
+        ["typeServiceDiffServ", 8, false],
+        ["totalLength", 16, false],
+        ["identification", 16, false],
+        ["fragmentOffset", 16, false],
+        ["timeToLive", 8, false],
+        ["protocol", 8, false],
+        ["headerChecksum", 16, false],
+        ["sourceAddress", 32, false],
+        ["destinationAddress", 32, false]
+      ]
+    },
+    {
+      "name" : "report_udp_t",
+      "id" : 3,
+      "fields" : [
+        ["sourcePort", 16, false],
+        ["destinationPort", 16, false],
+        ["lengthUDP", 16, false],
+        ["checksum", 16, false]
+      ]
+    },
+    {
+      "name" : "telemetryreport_t",
+      "id" : 4,
+      "fields" : [
+        ["f_version", 8, false],
+        ["f_next_proto", 8, false],
+        ["f_drop", 1, false],
+        ["f_queue", 1, false],
+        ["f_flow", 1, false],
+        ["f_rsvd", 16, false],
+        ["f_hw_id", 8, false],
+        ["f_seq_num", 32, false],
+        ["f_ingress_ts", 64, false],
+        ["_padding", 5, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 5,
+      "fields" : [
+        ["destinationAddress", 48, false],
+        ["sourceAddress", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "arp_t",
+      "id" : 6,
+      "fields" : [
+        ["hardwareType", 16, false],
+        ["protocoloType", 16, false],
+        ["hardwareAddressLength", 8, false],
+        ["protocolAddressLength", 8, false],
+        ["opcode", 16, false],
+        ["senderHardwareAddress", 48, false],
+        ["senderProtocolAddress", 32, false],
+        ["targetHardwareAddress", 48, false],
+        ["targetProtocolAddress", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 7,
+      "fields" : [
+        ["version", 4, false],
+        ["headerLength", 4, false],
+        ["typeServiceDiffServ", 8, false],
+        ["totalLength", 16, false],
+        ["identification", 16, false],
+        ["fragmentOffset", 16, false],
+        ["timeToLive", 8, false],
+        ["protocol", 8, false],
+        ["headerChecksum", 16, false],
+        ["sourceAddress", 32, false],
+        ["destinationAddress", 32, false]
+      ]
+    },
+    {
+      "name" : "tcp_t",
+      "id" : 8,
+      "fields" : [
+        ["sourcePort", 16, false],
+        ["destinationPort", 16, false],
+        ["sequenceNumber", 32, false],
+        ["acknowledgementNumber", 32, false],
+        ["dataOffset", 4, false],
+        ["reserved", 4, false],
+        ["flags", 8, false],
+        ["windowSize", 16, false],
+        ["checksum", 16, false],
+        ["urgentPointers", 16, false]
+      ]
+    },
+    {
+      "name" : "udp_t",
+      "id" : 9,
+      "fields" : [
+        ["sourcePort", 16, false],
+        ["destinationPort", 16, false],
+        ["lengthUDP", 16, false],
+        ["checksum", 16, false]
+      ]
+    },
+    {
+      "name" : "INThopByhopHeader_t",
+      "id" : 10,
+      "fields" : [
+        ["int_version", 8, false],
+        ["int_replication", 8, false],
+        ["int_copy", 1, false],
+        ["int_exceeded", 1, false],
+        ["int_rsvd_1", 8, false],
+        ["int_ins_cnt", 8, false],
+        ["int_max_hops", 8, false],
+        ["int_total_hops", 8, false],
+        ["int_instruction_bit", 8, false],
+        ["int_rsvd_instructions", 6, false]
+      ]
+    },
+    {
+      "name" : "INTshim_t",
+      "id" : 11,
+      "fields" : [
+        ["shim_type", 8, false],
+        ["shim_reserved1", 8, false],
+        ["shim_length", 8, false],
+        ["shim_rsvd2", 8, false]
+      ]
+    },
+    {
+      "name" : "int_switch_id_t",
+      "id" : 12,
+      "fields" : [
+        ["int_switch_id", 32, false]
+      ]
+    },
+    {
+      "name" : "int_ingress_egress_ports_t",
+      "id" : 13,
+      "fields" : [
+        ["int_ingress_id", 16, false],
+        ["int_egress_id", 16, false]
+      ]
+    },
+    {
+      "name" : "int_hop_latency_t",
+      "id" : 14,
+      "fields" : [
+        ["int_hop_latency", 64, false]
+      ]
+    },
+    {
+      "name" : "int_ingressTimestamp_t",
+      "id" : 15,
+      "fields" : [
+        ["int_ingressTimestamp", 64, false]
+      ]
+    },
+    {
+      "name" : "int_egressTimestamp_t",
+      "id" : 16,
+      "fields" : [
+        ["int_egressTimestamp", 64, false]
+      ]
+    },
+    {
+      "name" : "INTtail_t",
+      "id" : 17,
+      "fields" : [
+        ["tail_header", 32, false],
+        ["tail_proto", 8, false],
+        ["tail_port", 16, false],
+        ["tail_dscp", 8, false]
+      ]
+    },
+    {
+      "name" : "switch_data_t",
+      "id" : 18,
+      "fields" : [
+        ["switch_id", 16, false],
+        ["port_in", 16, false],
+        ["port_out", 16, false],
+        ["shimINTlength", 16, false],
+        ["instruction", 8, false],
+        ["ingresststamp", 64, false],
+        ["egresststamp", 64, false]
+      ]
+    },
+    {
+      "name" : "intrinsic_metadata_t",
+      "id" : 19,
+      "fields" : [
+        ["ingress_global_tstamp", 64, false],
+        ["current_global_tstamp", 64, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 20,
+      "fields" : [
+        ["ingress_port", 16, false],
+        ["packet_length", 14, false],
+        ["egress_spec", 16, false],
+        ["egress_port", 16, false],
+        ["egress_instance", 10, false],
+        ["instance_type", 4, false],
+        ["clone_spec", 32, false],
+        ["parser_error_location", 8, false],
+        ["parser_status", 3, false],
+        ["checksum_error", 1, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "report_ethernet",
+      "id" : 2,
+      "header_type" : "report_ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "report_ipv4",
+      "id" : 3,
+      "header_type" : "report_ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "report_udp",
+      "id" : 4,
+      "header_type" : "report_udp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "report",
+      "id" : 5,
+      "header_type" : "telemetryreport_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 6,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "arp",
+      "id" : 7,
+      "header_type" : "arp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 8,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "tcp",
+      "id" : 9,
+      "header_type" : "tcp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "udp",
+      "id" : 10,
+      "header_type" : "udp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "hopINT",
+      "id" : 11,
+      "header_type" : "INThopByhopHeader_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "shimINT",
+      "id" : 12,
+      "header_type" : "INTshim_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "switch_id",
+      "id" : 13,
+      "header_type" : "int_switch_id_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "int_ingress_egress_ports",
+      "id" : 14,
+      "header_type" : "int_ingress_egress_ports_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "hop_latency",
+      "id" : 15,
+      "header_type" : "int_hop_latency_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ingressTimestamp",
+      "id" : 16,
+      "header_type" : "int_ingressTimestamp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "egressTimestamp",
+      "id" : 17,
+      "header_type" : "int_egressTimestamp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "tailINT",
+      "id" : 18,
+      "header_type" : "INTtail_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "switch_local",
+      "id" : 19,
+      "header_type" : "switch_data_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "intrinsic_metadata",
+      "id" : 20,
+      "header_type" : "intrinsic_metadata_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 1],
+    ["PacketTooShort", 2],
+    ["NoMatch", 3],
+    ["StackOutOfBounds", 4],
+    ["HeaderTooShort", 5],
+    ["ParserTimeout", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "0x0806",
+              "mask" : null,
+              "next_state" : "parse_arp"
+            },
+            {
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 438,
+            "column" : 10,
+            "source_fragment" : "start"
+          }
+        },
+        {
+          "name" : "parse_arp",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "arp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["arp", "hardwareType"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 458,
+            "column" : 10,
+            "source_fragment" : "parse_arp"
+          }
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "parse_tcp"
+            },
+            {
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 470,
+            "column" : 10,
+            "source_fragment" : "parse_ipv4"
+          }
+        },
+        {
+          "name" : "parse_tcp",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "tcp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "0x17",
+              "mask" : null,
+              "next_state" : "parse_shimINT"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 483,
+            "column" : 10,
+            "source_fragment" : "parse_tcp"
+          }
+        },
+        {
+          "name" : "parse_udp",
+          "id" : 4,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "udp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "0x17",
+              "mask" : null,
+              "next_state" : "parse_shimINT"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 495,
+            "column" : 10,
+            "source_fragment" : "parse_udp"
+          }
+        },
+        {
+          "name" : "parse_shimINT",
+          "id" : 5,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "shimINT"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "hopINT"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 517,
+            "column" : 10,
+            "source_fragment" : "parse_shimINT"
+          }
+        }
+      ]
+    }
+  ],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 1075,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["ethernet", "arp", "ipv4", "tcp", "udp", "hopINT", "shimINT", "switch_id", "int_ingress_egress_ports", "hop_latency", "ingressTimestamp", "egressTimestamp", "tailINT"]
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 1040,
+        "column" : 1,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "headerLength"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "typeServiceDiffServ"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "totalLength"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "fragmentOffset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "timeToLive"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "sourceAddress"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "destinationAddress"]
+        }
+      ],
+      "output_width" : 16
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : [],
+      "source_info" : {
+        "filename" : "C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4",
+        "line" : 68,
+        "column" : 7,
+        "source_fragment" : "NoAction"
+      }
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : [],
+      "source_info" : {
+        "filename" : "C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4",
+        "line" : 68,
+        "column" : 7,
+        "source_fragment" : "NoAction"
+      }
+    },
+    {
+      "name" : "NoAction",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : [],
+      "source_info" : {
+        "filename" : "C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4",
+        "line" : 68,
+        "column" : 7,
+        "source_fragment" : "NoAction"
+      }
+    },
+    {
+      "name" : "drop",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 590,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 589,
+        "column" : 11,
+        "source_fragment" : "drop"
+      }
+    },
+    {
+      "name" : "drop",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "drop",
+          "parameters" : [],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 590,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop()"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 589,
+        "column" : 11,
+        "source_fragment" : "drop"
+      }
+    },
+    {
+      "name" : "arp_forward",
+      "id" : 5,
+      "runtime_data" : [
+        {
+          "name" : "dstmac",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "srcmac",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "espec",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 619,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = espec"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "sourceAddress"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 620,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.sourceAddress = srcmac"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "destinationAddress"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 621,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.destinationAddress = dstmac"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 618,
+        "column" : 11,
+        "source_fragment" : "arp_forward"
+      }
+    },
+    {
+      "name" : "ipv4_forward",
+      "id" : 6,
+      "runtime_data" : [
+        {
+          "name" : "dstmac",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "srcmac",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "espec",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 655,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = espec"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "sourceAddress"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 656,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.sourceAddress = srcmac"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "destinationAddress"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 657,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.destinationAddress = dstmac"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "timeToLive"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "timeToLive"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 658,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.timeToLive = hdr.ipv4.timeToLive - 1"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 654,
+        "column" : 11,
+        "source_fragment" : "ipv4_forward"
+      }
+    },
+    {
+      "name" : "add_int_source",
+      "id" : 7,
+      "runtime_data" : [
+        {
+          "name" : "instruction",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 597,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.port_out = standard_metadata.egress_spec"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_port"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 598,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.port_in = standard_metadata.ingress_port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "switch_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 28,
+            "column" : 22,
+            "source_fragment" : "1; ..."
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "shimINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 714,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 717,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_type = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_reserved1"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 718,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_reserved1 = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 719,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_rsvd2"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 720,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_rsvd2 = 0"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hopINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 726,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_version"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x08"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 728,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_version = 8"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_replication"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 729,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_replication = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_copy"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 730,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_copy = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_exceeded"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 731,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_exceeded = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_rsvd_1"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 732,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_rsvd_1 = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_ins_cnt"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x08"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 733,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_ins_cnt = 8"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_max_hops"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 734,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_max_hops = 2"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 735,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_instruction_bit"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 736,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_instruction_bit = instruction"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_rsvd_instructions"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 737,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_rsvd_instructions = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["ipv4", "totalLength"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x0008"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0004"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 745,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + INT_HEADER_SIZE + INT_SHIM_HEADER_SIZE"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "lengthUDP"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "+",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["udp", "lengthUDP"]
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0x0008"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0004"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 746,
+            "column" : 8,
+            "source_fragment" : "hdr.udp.lengthUDP = hdr.udp.lengthUDP + INT_HEADER_SIZE + INT_SHIM_HEADER_SIZE"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x17"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 19,
+            "column" : 24,
+            "source_fragment" : "0x17; ..."
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 710,
+        "column" : 11,
+        "source_fragment" : "add_int_source"
+      }
+    },
+    {
+      "name" : "act",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "ingresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "ingress_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 770,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.ingresststamp = meta.intrinsic_metadata.ingress_global_tstamp"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "NoAction",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : [],
+      "source_info" : {
+        "filename" : "C:/NFP_SDK_6.1.0-preview/p4/include/16/p4include/core.p4",
+        "line" : 68,
+        "column" : 7,
+        "source_fragment" : "NoAction"
+      }
+    },
+    {
+      "name" : "action_eq128",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 879,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 880,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 876,
+        "column" : 11,
+        "source_fragment" : "action_eq128"
+      }
+    },
+    {
+      "name" : "action_eq192",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_ingress_egress_ports"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 826,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_ingress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 827,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_ingress_id = meta.switch_local.port_in"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_egress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 828,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_egress_id = meta.switch_local.port_out"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 829,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_INGRESS_EGRESS"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 888,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 889,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 884,
+        "column" : 11,
+        "source_fragment" : "action_eq192"
+      }
+    },
+    {
+      "name" : "action_eq224",
+      "id" : 12,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_ingress_egress_ports"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 826,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_ingress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 827,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_ingress_id = meta.switch_local.port_in"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_egress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 828,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_egress_id = meta.switch_local.port_out"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 829,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_INGRESS_EGRESS"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "current_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 838,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.egresststamp = meta.intrinsic_metadata.current_global_tstamp"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hop_latency"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 839,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hop_latency", "int_hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "egresststamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "ingresststamp"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 840,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.int_hop_latency = ((meta.switch_local.egresststamp) - (meta.switch_local.ingresststamp)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 841,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_HOP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 898,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 899,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 893,
+        "column" : 11,
+        "source_fragment" : "action_eq224"
+      }
+    },
+    {
+      "name" : "action_eq240",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_ingress_egress_ports"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 826,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_ingress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 827,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_ingress_id = meta.switch_local.port_in"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_egress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 828,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_egress_id = meta.switch_local.port_out"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 829,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_INGRESS_EGRESS"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "current_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 838,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.egresststamp = meta.intrinsic_metadata.current_global_tstamp"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hop_latency"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 839,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hop_latency", "int_hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "egresststamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "ingresststamp"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 840,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.int_hop_latency = ((meta.switch_local.egresststamp) - (meta.switch_local.ingresststamp)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 841,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_HOP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ingressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 849,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ingressTimestamp", "int_ingressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "ingresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 850,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.int_ingressTimestamp = meta.switch_local.ingresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 851,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_IN_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 909,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 910,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 903,
+        "column" : 11,
+        "source_fragment" : "action_eq240"
+      }
+    },
+    {
+      "name" : "action_eq248",
+      "id" : 14,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_ingress_egress_ports"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 826,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_ingress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 827,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_ingress_id = meta.switch_local.port_in"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_egress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 828,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_egress_id = meta.switch_local.port_out"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 829,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_INGRESS_EGRESS"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "current_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 838,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.egresststamp = meta.intrinsic_metadata.current_global_tstamp"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hop_latency"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 839,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hop_latency", "int_hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "egresststamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "ingresststamp"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 840,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.int_hop_latency = ((meta.switch_local.egresststamp) - (meta.switch_local.ingresststamp)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 841,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_HOP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ingressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 849,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ingressTimestamp", "int_ingressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "ingresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 850,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.int_ingressTimestamp = meta.switch_local.ingresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 851,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_IN_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "egressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 859,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["egressTimestamp", "int_egressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 860,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.int_egressTimestamp = meta.switch_local.egresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 861,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>) INT_OUT_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 922,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 923,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 915,
+        "column" : 11,
+        "source_fragment" : "action_eq248"
+      }
+    },
+    {
+      "name" : "action_eq160",
+      "id" : 15,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "current_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 838,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.egresststamp = meta.intrinsic_metadata.current_global_tstamp"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hop_latency"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 839,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hop_latency", "int_hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "egresststamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "ingresststamp"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 840,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.int_hop_latency = ((meta.switch_local.egresststamp) - (meta.switch_local.ingresststamp)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 841,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_HOP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 937,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 938,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 933,
+        "column" : 11,
+        "source_fragment" : "action_eq160"
+      }
+    },
+    {
+      "name" : "action_eq184",
+      "id" : 16,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "switch_id"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 818,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_id", "int_switch_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["switch_local", "switch_id"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 819,
+            "column" : 8,
+            "source_fragment" : "hdr.switch_id.int_switch_id = (bit<32>)meta.switch_local.switch_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 820,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_SWITCH_SIZE"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["intrinsic_metadata", "current_global_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 838,
+            "column" : 8,
+            "source_fragment" : "meta.switch_local.egresststamp = meta.intrinsic_metadata.current_global_tstamp"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "hop_latency"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 839,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hop_latency", "int_hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "egresststamp"]
+                      },
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["switch_local", "ingresststamp"]
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffffffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 840,
+            "column" : 8,
+            "source_fragment" : "hdr.hop_latency.int_hop_latency = ((meta.switch_local.egresststamp) - (meta.switch_local.ingresststamp)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 841,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_HOP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ingressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 849,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ingressTimestamp", "int_ingressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "ingresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 850,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.int_ingressTimestamp = meta.switch_local.ingresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 851,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_IN_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "egressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 859,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["egressTimestamp", "int_egressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 860,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.int_egressTimestamp = meta.switch_local.egresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 861,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>) INT_OUT_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 949,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 950,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 943,
+        "column" : 11,
+        "source_fragment" : "action_eq184"
+      }
+    },
+    {
+      "name" : "action_eq88",
+      "id" : 17,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_ingress_egress_ports"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 826,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_ingress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_in"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 827,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_ingress_id = meta.switch_local.port_in"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_ingress_egress_ports", "int_egress_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "port_out"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 828,
+            "column" : 8,
+            "source_fragment" : "hdr.int_ingress_egress_ports.int_egress_id = meta.switch_local.port_out"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x04"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 829,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_INGRESS_EGRESS"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "ingressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 849,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ingressTimestamp", "int_ingressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "ingresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 850,
+            "column" : 8,
+            "source_fragment" : "hdr.ingressTimestamp.int_ingressTimestamp = meta.switch_local.ingresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 851,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>)INT_IN_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "egressTimestamp"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 859,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["egressTimestamp", "int_egressTimestamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["switch_local", "egresststamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 860,
+            "column" : 8,
+            "source_fragment" : "hdr.egressTimestamp.int_egressTimestamp = meta.switch_local.egresststamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shimINT", "shim_length"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shimINT", "shim_length"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x08"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 861,
+            "column" : 8,
+            "source_fragment" : "hdr.shimINT.shim_length = hdr.shimINT.shim_length + (bit<8>) INT_OUT_TIMESTAMP_SIZE"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "tailINT"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 869,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_header"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000ff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 870,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_header = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_proto"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 871,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_proto = hdr.ipv4.protocol"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["udp", "destinationPort"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 872,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_port = hdr.udp.destinationPort"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["tailINT", "tail_dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "typeServiceDiffServ"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 873,
+            "column" : 8,
+            "source_fragment" : "hdr.tailINT.tail_dscp = hdr.ipv4.typeServiceDiffServ"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["hopINT", "int_total_hops"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["hopINT", "int_total_hops"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x01"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 959,
+            "column" : 8,
+            "source_fragment" : "hdr.hopINT.int_total_hops = hdr.hopINT.int_total_hops + 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLength"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["shimINT", "shim_length"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 960,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLength = hdr.ipv4.totalLength + (bit<16>)hdr.shimINT.shim_length"
+          }
+        }
+      ],
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 954,
+        "column" : 11,
+        "source_fragment" : "action_eq88"
+      }
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 583,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "tbl_act",
+      "tables" : [
+        {
+          "name" : "tbl_act",
+          "id" : 0,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [8],
+          "actions" : ["act"],
+          "base_default_next" : "node_3",
+          "next_tables" : {
+            "act" : "node_3"
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "arp_lpm",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 626,
+            "column" : 10,
+            "source_fragment" : "arp_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "target" : ["arp", "targetProtocolAddress"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5, 3, 0],
+          "actions" : ["arp_forward", "drop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "arp_forward" : null,
+            "drop" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "ipv4_lpm",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 666,
+            "column" : 10,
+            "source_fragment" : "ipv4_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "target" : ["ipv4", "destinationAddress"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6, 4, 1],
+          "actions" : ["ipv4_forward", "drop", "NoAction"],
+          "base_default_next" : "node_7",
+          "next_tables" : {
+            "ipv4_forward" : "node_7",
+            "drop" : "node_7",
+            "NoAction" : "node_7"
+          },
+          "default_entry" : {
+            "action_id" : 4,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "int_source",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 756,
+            "column" : 10,
+            "source_fragment" : "int_source"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7, 2],
+          "actions" : ["add_int_source", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "add_int_source" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_3",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 772,
+            "column" : 11,
+            "source_fragment" : "hdr.arp.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["arp", "$valid$"]
+              }
+            }
+          },
+          "true_next" : "arp_lpm",
+          "false_next" : "node_5"
+        },
+        {
+          "name" : "node_5",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 776,
+            "column" : 17,
+            "source_fragment" : "hdr.ipv4.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["ipv4", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "ipv4_lpm"
+        },
+        {
+          "name" : "node_7",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 778,
+            "column" : 15,
+            "source_fragment" : "hdr.ipv4.typeServiceDiffServ == DSCP_INT"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["ipv4", "typeServiceDiffServ"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x17"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "int_source"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+        "line" : 803,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : "node_11",
+      "tables" : [
+        {
+          "name" : "add_metadata",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 968,
+            "column" : 10,
+            "source_fragment" : "add_metadata"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "target" : ["hopINT", "int_instruction_bit"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10, 11, 12, 13, 14, 15, 16, 17, 9],
+          "actions" : ["action_eq128", "action_eq192", "action_eq224", "action_eq240", "action_eq248", "action_eq160", "action_eq184", "action_eq88", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "action_eq128" : null,
+            "action_eq192" : null,
+            "action_eq224" : null,
+            "action_eq240" : null,
+            "action_eq248" : null,
+            "action_eq160" : null,
+            "action_eq184" : null,
+            "action_eq88" : null,
+            "NoAction" : null
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_11",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "C:/Users/P4/NFP_SDK/switch_INT01_with_demand/switch_INT01_with_demand.p4",
+            "line" : 1014,
+            "column" : 11,
+            "source_fragment" : "hdr.hopINT.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["hopINT", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "add_metadata"
+        }
+      ]
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "target" : ["ipv4", "headerChecksum"],
+      "calculation" : "calc",
+      "verify" : false,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      },
+      "type" : "generic"
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "extern_function_instances" : [],
+  "field_aliases" : [],
+  "flow_variables" : []
+}

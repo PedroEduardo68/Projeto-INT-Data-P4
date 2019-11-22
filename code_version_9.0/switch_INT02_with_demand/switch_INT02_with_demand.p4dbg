@@ -1,0 +1,29 @@
+{
+    "breakpoints": [], 
+    "watches": [
+        {
+            "name": "egress::action_eq248", 
+            "type": "action-stats-counter"
+        }, 
+        {
+            "name": "RX", 
+            "type": "system-counter"
+        }, 
+        {
+            "name": "TX", 
+            "type": "system-counter"
+        }, 
+        {
+            "name": "ingress::arp_forward", 
+            "type": "action-stats-counter"
+        }, 
+        {
+            "name": "ingress::send_telemetry_report", 
+            "type": "action-stats-counter"
+        }, 
+        {
+            "name": "ingress::ipv4_forward", 
+            "type": "action-stats-counter"
+        }
+    ]
+}
