@@ -1,0 +1,315 @@
+{
+    "tables": {
+        "ingress::ipv4_lpm": {
+            "rules": [
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:60:dd:45:47:ff"
+                            }, 
+                            "espec": {
+                                "value": "p4"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:d2"
+                            }
+                        }, 
+                        "type": "ingress::ipv4_forward"
+                    }, 
+                    "name": "to_host1", 
+                    "match": {
+                        "ipv4.destinationAddress": {
+                            "value": "10.1.1.1"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:15:4d:13:16:0c"
+                            }, 
+                            "espec": {
+                                "value": "p0"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:ce"
+                            }
+                        }, 
+                        "type": "ingress::ipv4_forward"
+                    }, 
+                    "name": "to_host2_switch2", 
+                    "match": {
+                        "ipv4.destinationAddress": {
+                            "value": "10.1.1.2"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:15:4d:13:16:0c"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:ce"
+                            }, 
+                            "espec": {
+                                "value": "p0"
+                            }
+                        }, 
+                        "type": "ingress::ipv4_forward"
+                    }, 
+                    "name": "to_collector_switch2", 
+                    "match": {
+                        "ipv4.destinationAddress": {
+                            "value": "10.1.1.5"
+                        }
+                    }
+                }
+            ], 
+            "default_rule": {
+                "action": {
+                    "type": "ingress::drop"
+                }, 
+                "name": "default"
+            }
+        }, 
+        "egress::add_metadata": {
+            "rules": [
+                {
+                    "action": {
+                        "type": "egress::action_eq128"
+                    }, 
+                    "name": "profile_128", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "128"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq192"
+                    }, 
+                    "name": "profile_192", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "192"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq224"
+                    }, 
+                    "name": "profile_224", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "224"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq240"
+                    }, 
+                    "name": "profile_240", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "240"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq248"
+                    }, 
+                    "name": "profile_248", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "248"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq160"
+                    }, 
+                    "name": "profile_160", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "160"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq184"
+                    }, 
+                    "name": "profile_184", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "184"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq88"
+                    }, 
+                    "name": "profile_88", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "88"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq252"
+                    }, 
+                    "name": "profile_252", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "252"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "type": "egress::action_eq254"
+                    }, 
+                    "name": "profile_254", 
+                    "match": {
+                        "hopINT.int_instruction_bit": {
+                            "value": "254"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "ingress::int_source": {
+            "default_rule": {
+                "action": {
+                    "data": {
+                        "instruction": {
+                            "value": "254"
+                        }
+                    }, 
+                    "type": "ingress::add_int_source"
+                }, 
+                "name": "add_source_int"
+            }
+        }, 
+        "ingress::arp_lpm": {
+            "rules": [
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:60:dd:45:47:ff"
+                            }, 
+                            "espec": {
+                                "value": "p4"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:d2"
+                            }
+                        }, 
+                        "type": "ingress::arp_forward"
+                    }, 
+                    "name": "to_host1", 
+                    "match": {
+                        "arp.targetProtocolAddress": {
+                            "value": "10.1.1.1"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:15:4d:13:16:0c"
+                            }, 
+                            "espec": {
+                                "value": "p0"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:ce"
+                            }
+                        }, 
+                        "type": "ingress::arp_forward"
+                    }, 
+                    "name": "to_host2_switch2", 
+                    "match": {
+                        "arp.targetProtocolAddress": {
+                            "value": "10.1.1.2"
+                        }
+                    }
+                }, 
+                {
+                    "action": {
+                        "data": {
+                            "dstmac": {
+                                "value": "00:15:4d:13:16:0c"
+                            }, 
+                            "srcmac": {
+                                "value": "00:15:4d:13:20:ce"
+                            }, 
+                            "espec": {
+                                "value": "p0"
+                            }
+                        }, 
+                        "type": "ingress::arp_forward"
+                    }, 
+                    "name": "to_collector_switch2", 
+                    "match": {
+                        "arp.targetProtocolAddress": {
+                            "value": "10.1.1.5"
+                        }
+                    }
+                }
+            ], 
+            "default_rule": {
+                "action": {
+                    "type": "ingress::drop"
+                }, 
+                "name": "default"
+            }
+        }
+    }, 
+    "registers": {
+        "configs": [
+            {
+                "count": 1, 
+                "index": 0, 
+                "register": "bytecountingress", 
+                "name": "p0byteingress", 
+                "value": "0"
+            }, 
+            {
+                "count": 4, 
+                "index": 4, 
+                "register": "bytecountingress", 
+                "name": "p4byteingress", 
+                "value": "0"
+            }, 
+            {
+                "count": 1, 
+                "index": 0, 
+                "register": "ingresscount", 
+                "name": "p0countingress", 
+                "value": "0"
+            }, 
+            {
+                "count": 4, 
+                "index": 4, 
+                "register": "ingresscount", 
+                "name": "p4countingress", 
+                "value": "0"
+            }
+        ]
+    }
+}

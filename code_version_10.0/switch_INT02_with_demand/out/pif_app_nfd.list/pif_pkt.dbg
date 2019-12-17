@@ -1,0 +1,268 @@
+.%scope file "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_380_V$619
+.%arg y 0 y_380_V$61a
+.%var result 0 result_380 LIX
+.%scope end
+.%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
+.%var nfp_cls_autopush_user_event_status 2 _nfp_cls_autopush_user_event_status SEX
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 3 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 5 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 6 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 7 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 8 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 9 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 10 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 11 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var pkt 14 _pkt SEX
+.%scope function pif_pkt_write_header _pif_pkt_write_header "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 15 122
+.%arg pktoff 0 pktoff_382_V$61d
+.%arg lmem 23 lmem_382_V$61e
+.%arg lmoff 0 lmoff_382_V$61f
+.%arg hdrlen 0 hdrlen_382_V$620
+.%var sig 24 sig_382 LIX
+.%var write_xfer 25 write_xfer_382 LIW
+.%var i 0 i_382 LIX
+.%var chunk 0 chunk_382 LIX
+.%var ctm_len_max 0 ctm_len_max_382 LIX
+.%var pkt_buf 26 pkt_buf_382 LIX
+.%var mu_base_ptr 26 mu_base_ptr_382 LIX
+.%var overshoot 24 overshoot_382 LIX
+.%var ctm_remnants 24 ctm_remnants_382 LIX
+.%var tocopy 24 tocopy_382 LIX
+.%var mu_off 24 mu_off_382 LIX
+.%scope block 67 89
+.%var to_write 24 to_write_385 LIX
+.%scope end
+.%scope end
+.%scope function pif_pkt_write_vheader _pif_pkt_write_vheader "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 126 188
+.%arg pktoff 0 pktoff_387_V$62f
+.%arg lmptr 23 lmptr_387_V$630
+.%arg lmsz 0 lmsz_387_V$631
+.%arg hdrlen 0 hdrlen_387_V$632
+.%arg varptr 27 varptr_387_V$633
+.%arg varoff_b 0 varoff_b_387_V$634
+.%var sig 24 sig_387 LIX
+.%var pkt_buf 26 pkt_buf_387 LIX
+.%var xfr_rd_data 28 xfr_rd_data_387 LIR
+.%var xfr_wr_data 29 xfr_wr_data_387 LIX
+.%var i 0 i_387 LIX
+.%var xfr_b 0 xfr_b_387 LIX
+.%var off_b 0 off_b_387 LIX
+.%var xfr_lw 0 xfr_lw_387 LIX
+.%var rem_b 0 rem_b_387 LIX
+.%scope end
+.%scope function pif_pkt_free_space _pif_pkt_free_space "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 191 292
+.%arg pktoff 0 pktoff_392_V$640
+.%arg hdrlen 0 hdrlen_392_V$641
+.%var sig 24 sig_392 LIX
+.%var read_xfer 30 read_xfer_392 LIR
+.%var write_xfer 31 write_xfer_392 LIW
+.%var pkt_buf 26 pkt_buf_392 LIX
+.%var mu_base 32 mu_base_392 LIX
+.%var mu_len 0 mu_len_392 LIX
+.%var mu_off 0 mu_off_392 LIX
+.%var toshift_mu 24 toshift_mu_392 LIX
+.%var toshift_mu2ctm 24 toshift_mu2ctm_392 LIX
+.%var toshift_ctm 24 toshift_ctm_392 LIX
+.%var i 0 i_392 LIX
+.%var chunk 0 chunk_392 LIX
+.%scope end
+.%scope function pif_pkt_move_pkt_up _pif_pkt_move_pkt_up "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 296 396
+.%arg pktoff 0 pktoff_398_V$650
+.%arg removelen 0 removelen_398_V$651
+.%var sig 24 sig_398 LIX
+.%var read_xfer 34 read_xfer_398 LIR
+.%var write_xfer 35 write_xfer_398 LIW
+.%var pkt_buf 26 pkt_buf_398 LIX
+.%var mu_base 32 mu_base_398 LIX
+.%var mu_len 0 mu_len_398 LIX
+.%var mu_off 0 mu_off_398 LIX
+.%var toshift_mu 24 toshift_mu_398 LIX
+.%var toshift_mu2ctm 24 toshift_mu2ctm_398 LIX
+.%var toshift_ctm 24 toshift_ctm_398 LIX
+.%var i 0 i_398 LIX
+.%var chunk 0 chunk_398 LIX
+.%scope end
+.%scope function pif_pkt_insert_header _pif_pkt_insert_header "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 399 436
+.%arg copylen 0 copylen_404_V$660
+.%arg hdrlen 0 hdrlen_404_V$661
+.%var sig 24 sig_404 LIX
+.%var pkt_buf 26 pkt_buf_404 LIX
+.%var read_xfer 36 read_xfer_404 LIR
+.%var write_xfer 37 write_xfer_404 LIW
+.%var tocopy 24 tocopy_404 LIX
+.%var chunk 0 chunk_404 LIX
+.%var bytes_copied 0 bytes_copied_404 LIX
+.%scope end
+.%scope function pif_pkt_remove_header _pif_pkt_remove_header "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 438 476
+.%arg copylen 0 copylen_406_V$66b
+.%arg hdrlen 0 hdrlen_406_V$66c
+.%var sig 24 sig_406 LIX
+.%var pkt_buf 26 pkt_buf_406 LIX
+.%var read_xfer 38 read_xfer_406 LIR
+.%var write_xfer 39 write_xfer_406 LIW
+.%var tocopy 24 tocopy_406 LIX
+.%var chunk 0 chunk_406 LIX
+.%var bytes_copied 0 bytes_copied_406 LIX
+.%var offset 24 offset_406 LIX
+.%scope end
+.%scope function pif_pkt_make_space _pif_pkt_make_space "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 479 608
+.%arg pktoff 0 pktoff_408_V$677
+.%arg hdrlen 0 hdrlen_408_V$678
+.%var sig 24 sig_408 LIX
+.%var read_xfer 40 read_xfer_408 LIR
+.%var write_xfer 41 write_xfer_408 LIW
+.%var mu_base_ptr 26 mu_base_ptr_408 LIX
+.%var ctm_base_ptr 26 ctm_base_ptr_408 LIX
+.%var ctm_len_max 0 ctm_len_max_408 LIX
+.%var ctm_len_init 0 ctm_len_init_408 LIX
+.%var ctm_len_final 0 ctm_len_final_408 LIX
+.%var ctm_off 0 ctm_off_408 LIX
+.%var i 0 i_408 LIX
+.%var chunk 0 chunk_408 LIX
+.%var toshift_mu 24 toshift_mu_408 LIX
+.%var toshift_ctm2mu 24 toshift_ctm2mu_408 LIX
+.%var toshift_ctm 24 toshift_ctm_408 LIX
+.%var ctm_overshoot 24 ctm_overshoot_408 LIX
+.%var mu_off 0 mu_off_408 LIX
+.%scope block 530 550
+.%var mem_ptr 26 mem_ptr_411 LIX
+.%scope end
+.%scope end
+.%scope function pif_pkt_dma_packet_down _pif_pkt_dma_packet_down "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\src\pif_pkt.c" 610 727
+.%arg insertlen 0 insertlen_414_V$68c
+.%var pkt_len_padded 0 pkt_len_padded_414 LIX
+.%var pkt_len_plus_insertlen 0 pkt_len_plus_insertlen_414 LIX
+.%var ctm_buffer_size 0 ctm_buffer_size_414 LIX
+.%var pkt_buf 26 pkt_buf_414 LIX
+.%scope block 628 654
+.%var ctm_source_ptr 26 ctm_source_ptr_415 LIX
+.%var ctm_dest_ptr 26 ctm_dest_ptr_415 LIX
+.%var mu_dest_ptr 26 mu_dest_ptr_415 LIX
+.%var pkt_status 42 pkt_status_415 LIR
+.%scope end
+.%scope block 660 725
+.%var mu_buffer_size 0 mu_buffer_size_417 LIX
+.%var bytes_to_copy 24 bytes_to_copy_417 LIX
+.%var offset 0 offset_417 LIX
+.%var xfer_len 0 xfer_len_417 LIX
+.%var ctm_offset_0_ptr 26 ctm_offset_0_ptr_417 LIX
+.%var pkt_status 42 pkt_status_417 LIR
+.%var mu_offset_0_ptr 26 mu_offset_0_ptr_417 LIX
+.%scope end
+.%scope end
+.%type U4
+.%type S4 {
+__reserved_16 0:16:16 0;
+source 0:4:12 0;
+type 0:0:4 0;
+}
+.%type S4 {
+__reserved_21 0:21:11 0;
+overflow 0:20:1 0;
+hwm 0:16:4 0;
+__reserved_12 0:12:4 0;
+read 0:8:4 0;
+__reserved_4 0:4:4 0;
+write 0:0:4 0;
+}
+.%type A16 4
+.%type U1
+.%type A32768 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A41943040 4
+.%type A10485760 4
+.%type S28 pktio_meta{
+__unnamed 0 15;
+}
+.%type S28 {
+__unnamed 0 16;
+__raw 0 22;
+}
+.%type S28 {
+p_nbi 0 17;
+p_ctm_size 8:30:2 0;
+p_orig_len 8:16:14 0;
+p_offset 8:0:16 0;
+p_src 12:16:16 0;
+p_dst 12:0:16 0;
+p_seq 16:16:16 0;
+p_ro_ctx 16:11:5 0;
+p_is_gro_seq 16:10:1 0;
+p_rx_ipv4_csum_ok 16:9:1 0;
+p_rx_ipv4_csum_present 16:8:1 0;
+p_rx_l4_csum_ok 16:7:1 0;
+p_rx_l4_csum_present 16:6:1 0;
+p_rx_l4_tcp 16:5:1 0;
+p_rx_mac_matched 16:4:1 0;
+p_tunnel 16:3:1 0;
+resv4 16:0:3 0;
+__unnamed 20 21;
+p_vlan 24:16:16 0;
+resv3 24:0:16 0;
+}
+.%type S8 nbi_meta_pkt_info{
+__unnamed 0 18;
+}
+.%type S8 {
+__unnamed 0 19;
+__raw 0 20;
+}
+.%type S8 {
+isl 0:26:6 0;
+pnum 0:16:10 0;
+bls 0:14:2 0;
+len 0:0:14 0;
+split 4:31:1 0;
+resv0 4:29:2 0;
+muptr 4:0:29 0;
+}
+.%type A8 0
+.%type S4 {
+p_timestamp 0:0:32 0;
+}
+.%type A28 0
+.%type P6 0
+.%type I4
+.%type A32 0
+.%type P3 4
+.%type P12 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type P3 33
+.%type U4
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type A32 0
+.%type S4 pkt_status_t{
+__unnamed 0 43;
+__raw 0 0;
+}
+.%type S4 {
+error 0:31:1 0;
+last_seg_rcvd 0:30:1 0;
+first_seg_rcvd 0:29:1 0;
+sent_to_me 0:28:1 0;
+not_valid 0:27:1 0;
+owned_by_me 0:26:1 0;
+owner 0:24:2 0;
+resv_0 0:18:6 0;
+size 0:16:2 0;
+resv_1 0:10:6 0;
+ctm_addr_div256 0:0:10 0;
+}

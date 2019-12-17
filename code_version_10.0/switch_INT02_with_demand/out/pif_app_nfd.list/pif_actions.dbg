@@ -1,0 +1,1597 @@
+.%scope file "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_445_V$633
+.%arg y 0 y_445_V$634
+.%var result 0 result_445 LIX
+.%scope end
+.%var nfp_cls_autopush_user_event 1 _nfp_cls_autopush_user_event SEX
+.%var nfp_cls_autopush_user_event_status 2 _nfp_cls_autopush_user_event_status SEX
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 3 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 5 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 6 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 7 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 8 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 9 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 10 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 11 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 12 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 13 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var pif_pkt_info_spec 14 _pif_pkt_info_spec SEX
+.%var pif_register_bytecountingress 18 _pif_register_bytecountingress SEX
+.%var pif_register_ingresscount 20 _pif_register_ingresscount SEX
+.%var pkt_clone_destination 22 _pkt_clone_destination SEX
+.%var pif_act_stats 24 _pif_act_stats SEX
+.%var mac_time_state 25 _mac_time_state SEX
+.%scope function pif_action_exec_op _pif_action_exec_op "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 4733 4802
+.%arg parrep 27 parrep_1028_V$637
+.%arg _actdata 28 _actdata_1028_V$638
+.%var opdata 29 opdata_1028 LIX
+.%var ret 32 ret_1028 LIX
+.%scope end
+.%scope function pif_action_exec_ingress__act _pif_action_exec_ingress__act "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 22 71
+.%arg _pif_parrep 27 _pif_parrep_453_V$6ba
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_453_V$6bb
+.%arg _pif_debug 0 _pif_debug_453_V$6bc
+.%var _pif_return 32 _pif_return_453 LIX
+.%var _pif_act_data 33 _pif_act_data_453 LIX
+.%var _pif_ctldata 35 _pif_ctldata_453 LIX
+.%var switch_local 37 switch_local_453 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_453 LIX
+.%scope block 30 52
+.%var temp0 0 temp0_454 LIX
+.%var temp1 0 temp1_454 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq192 _pif_action_exec_egress__action_eq192 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 73 318
+.%arg _pif_parrep 27 _pif_parrep_456_V$6cd
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_456_V$6ce
+.%arg _pif_debug 0 _pif_debug_456_V$6cf
+.%var _pif_return 32 _pif_return_456 LIX
+.%var _pif_act_data 41 _pif_act_data_456 LIX
+.%var _pif_ctldata 35 _pif_ctldata_456 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_456 LIX
+.%var ipv4 45 ipv4_456 LIX
+.%var hopINT 47 hopINT_456 LIX
+.%var shimINT 49 shimINT_456 LIX
+.%var switch_local 37 switch_local_456 LIX
+.%var switch_id 51 switch_id_456 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_456 LIX
+.%scope block 86 108
+.%var temp0 0 temp0_457 LIX
+.%var temp1 0 temp1_457 LIX
+.%scope end
+.%scope block 128 135
+.%var _pif_flc_update_val 0 _pif_flc_update_val_463 LIX
+.%scope end
+.%scope block 144 167
+.%var pif_expression__expression_action_eq192_0_register_0 0 pif_expression__expression_action_eq192_0_register_0_468 LIX
+.%scope block 150 163
+.%var pif_expression__expression_action_eq192_0_register_1 0 pif_expression__expression_action_eq192_0_register_1_469 LIX
+.%var pif_expression__expression_action_eq192_0_register_2 0 pif_expression__expression_action_eq192_0_register_2_469 LIX
+.%var pif_expression__expression_action_eq192_0_register_3 0 pif_expression__expression_action_eq192_0_register_3_469 LIX
+.%scope end
+.%scope end
+.%scope block 168 195
+.%var pif_expression__expression_action_eq192_1_register_2 0 pif_expression__expression_action_eq192_1_register_2_470 LIX
+.%scope block 174 191
+.%var pif_expression__expression_action_eq192_1_register_0 0 pif_expression__expression_action_eq192_1_register_0_471 LIX
+.%var pif_expression__expression_action_eq192_1_register_1 0 pif_expression__expression_action_eq192_1_register_1_471 LIX
+.%scope end
+.%scope end
+.%scope block 218 245
+.%var pif_expression__expression_action_eq192_2_register_2 0 pif_expression__expression_action_eq192_2_register_2_477 LIX
+.%scope block 224 241
+.%var pif_expression__expression_action_eq192_2_register_0 0 pif_expression__expression_action_eq192_2_register_0_478 LIX
+.%var pif_expression__expression_action_eq192_2_register_1 0 pif_expression__expression_action_eq192_2_register_1_478 LIX
+.%scope end
+.%scope end
+.%scope block 246 273
+.%var pif_expression__expression_action_eq192_3_register_2 0 pif_expression__expression_action_eq192_3_register_2_479 LIX
+.%scope block 252 269
+.%var pif_expression__expression_action_eq192_3_register_0 0 pif_expression__expression_action_eq192_3_register_0_480 LIX
+.%var pif_expression__expression_action_eq192_3_register_1 0 pif_expression__expression_action_eq192_3_register_1_480 LIX
+.%scope end
+.%scope end
+.%scope block 274 307
+.%var pif_expression__expression_action_eq192_4_register_0 0 pif_expression__expression_action_eq192_4_register_0_481 LIX
+.%scope block 280 303
+.%var pif_expression__expression_action_eq192_4_register_1 0 pif_expression__expression_action_eq192_4_register_1_482 LIX
+.%var pif_expression__expression_action_eq192_4_register_2 0 pif_expression__expression_action_eq192_4_register_2_482 LIX
+.%var pif_expression__expression_action_eq192_4_register_3 0 pif_expression__expression_action_eq192_4_register_3_482 LIX
+.%scope end
+.%scope end
+.%scope block 309 316
+.%var _pif_flc_update_val 0 _pif_flc_update_val_483 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__send_telemetry_report _pif_action_exec_ingress__send_telemetry_report "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 320 663
+.%arg _pif_parrep 27 _pif_parrep_485_V$6f8
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_485_V$6f9
+.%arg _pif_debug 0 _pif_debug_485_V$6fa
+.%var _pif_return 32 _pif_return_485 LIX
+.%var _pif_act_data 53 _pif_act_data_485 LIX
+.%var _pif_ctldata 35 _pif_ctldata_485 LIX
+.%var ethernet 55 ethernet_485 LIX
+.%var udp 57 udp_485 LIX
+.%var report_ipv4 59 report_ipv4_485 LIX
+.%var report 61 report_485 LIX
+.%var hopINT 47 hopINT_485 LIX
+.%var ipv4 45 ipv4_485 LIX
+.%var report_udp 63 report_udp_485 LIX
+.%var standard_metadata 65 standard_metadata_485 LIX
+.%var switch_local 37 switch_local_485 LIX
+.%var shimINT 49 shimINT_485 LIX
+.%var report_ethernet 67 report_ethernet_485 LIX
+.%scope block 337 359
+.%var temp0 0 temp0_486 LIX
+.%var temp1 0 temp1_486 LIX
+.%scope end
+.%scope block 630 653
+.%var pif_expression__expression_send_telemetry_report_0_register_0 0 pif_expression__expression_send_telemetry_report_0_register_0_540 LIX
+.%scope block 636 649
+.%var pif_expression__expression_send_telemetry_report_0_register_1 0 pif_expression__expression_send_telemetry_report_0_register_1_541 LIX
+.%var pif_expression__expression_send_telemetry_report_0_register_2 0 pif_expression__expression_send_telemetry_report_0_register_2_541 LIX
+.%var pif_expression__expression_send_telemetry_report_0_register_3 0 pif_expression__expression_send_telemetry_report_0_register_3_541 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__act_0 _pif_action_exec_ingress__act_0 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 665 941
+.%arg _pif_parrep 27 _pif_parrep_543_V$738
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_543_V$739
+.%arg _pif_debug 0 _pif_debug_543_V$73a
+.%var _pif_return 32 _pif_return_543 LIX
+.%var _pif_act_data 69 _pif_act_data_543 LIX
+.%var _pif_ctldata 35 _pif_ctldata_543 LIX
+.%var switch_local 37 switch_local_543 LIX
+.%var standard_metadata 65 standard_metadata_543 LIX
+.%var ingress__scalars 71 ingress__scalars_543 LIX
+.%scope block 674 696
+.%var temp0 0 temp0_544 LIX
+.%var temp1 0 temp1_544 LIX
+.%scope end
+.%scope block 706 729
+.%var pif_expression__expression_act_0_0_register_0 0 pif_expression__expression_act_0_0_register_0_545 LIX
+.%scope block 712 725
+.%var pif_expression__expression_act_0_0_register_1 0 pif_expression__expression_act_0_0_register_1_546 LIX
+.%var pif_expression__expression_act_0_0_register_2 0 pif_expression__expression_act_0_0_register_2_546 LIX
+.%var pif_expression__expression_act_0_0_register_3 0 pif_expression__expression_act_0_0_register_3_546 LIX
+.%scope end
+.%scope end
+.%scope block 734 748
+.%var _pif_index 0 _pif_index_548 LIX
+.%scope block 738 747
+.%var _pif_xreg 73 _pif_xreg_549 LIR
+.%var _pif_hdrptr 74 _pif_hdrptr_549 LIX
+.%scope end
+.%scope end
+.%scope block 750 777
+.%var pif_expression__expression_act_0_1_register_2 0 pif_expression__expression_act_0_1_register_2_550 LIX
+.%scope block 756 772
+.%var pif_expression__expression_act_0_1_register_0 0 pif_expression__expression_act_0_1_register_0_551 LIX
+.%var pif_expression__expression_act_0_1_register_1 0 pif_expression__expression_act_0_1_register_1_551 LIX
+.%scope end
+.%scope end
+.%scope block 778 801
+.%var pif_expression__expression_act_0_2_register_0 0 pif_expression__expression_act_0_2_register_0_552 LIX
+.%scope block 784 797
+.%var pif_expression__expression_act_0_2_register_1 0 pif_expression__expression_act_0_2_register_1_553 LIX
+.%var pif_expression__expression_act_0_2_register_2 0 pif_expression__expression_act_0_2_register_2_553 LIX
+.%var pif_expression__expression_act_0_2_register_3 0 pif_expression__expression_act_0_2_register_3_553 LIX
+.%scope end
+.%scope end
+.%scope block 806 818
+.%var _pif_index 0 _pif_index_555 LIX
+.%scope block 810 817
+.%var _pif_xreg 75 _pif_xreg_556 LIW
+.%var _pif_hdrptr 74 _pif_hdrptr_556 LIX
+.%scope end
+.%scope end
+.%scope block 820 843
+.%var pif_expression__expression_act_0_3_register_0 0 pif_expression__expression_act_0_3_register_0_557 LIX
+.%scope block 826 839
+.%var pif_expression__expression_act_0_3_register_1 0 pif_expression__expression_act_0_3_register_1_558 LIX
+.%var pif_expression__expression_act_0_3_register_2 0 pif_expression__expression_act_0_3_register_2_558 LIX
+.%var pif_expression__expression_act_0_3_register_3 0 pif_expression__expression_act_0_3_register_3_558 LIX
+.%scope end
+.%scope end
+.%scope block 848 862
+.%var _pif_index 0 _pif_index_560 LIX
+.%scope block 852 861
+.%var _pif_xreg 76 _pif_xreg_561 LIR
+.%var _pif_hdrptr 77 _pif_hdrptr_561 LIX
+.%scope end
+.%scope end
+.%scope block 864 897
+.%var pif_expression__expression_act_0_4_register_0 0 pif_expression__expression_act_0_4_register_0_562 LIX
+.%scope block 870 892
+.%var pif_expression__expression_act_0_4_register_1 0 pif_expression__expression_act_0_4_register_1_563 LIX
+.%var pif_expression__expression_act_0_4_register_2 0 pif_expression__expression_act_0_4_register_2_563 LIX
+.%var pif_expression__expression_act_0_4_register_3 0 pif_expression__expression_act_0_4_register_3_563 LIX
+.%scope end
+.%scope end
+.%scope block 898 921
+.%var pif_expression__expression_act_0_5_register_0 0 pif_expression__expression_act_0_5_register_0_564 LIX
+.%scope block 904 917
+.%var pif_expression__expression_act_0_5_register_1 0 pif_expression__expression_act_0_5_register_1_565 LIX
+.%var pif_expression__expression_act_0_5_register_2 0 pif_expression__expression_act_0_5_register_2_565 LIX
+.%var pif_expression__expression_act_0_5_register_3 0 pif_expression__expression_act_0_5_register_3_565 LIX
+.%scope end
+.%scope end
+.%scope block 926 938
+.%var _pif_index 0 _pif_index_567 LIX
+.%scope block 930 937
+.%var _pif_xreg 78 _pif_xreg_568 LIW
+.%var _pif_hdrptr 77 _pif_hdrptr_568 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__act_1 _pif_action_exec_ingress__act_1 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 943 1067
+.%arg _pif_parrep 27 _pif_parrep_569_V$773
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_569_V$774
+.%arg _pif_debug 0 _pif_debug_569_V$775
+.%var _pif_return 32 _pif_return_569 LIX
+.%var _pif_act_data 79 _pif_act_data_569 LIX
+.%var _pif_ctldata 35 _pif_ctldata_569 LIX
+.%var switch_local 37 switch_local_569 LIX
+.%var ingress__scalars 71 ingress__scalars_569 LIX
+.%scope block 951 973
+.%var temp0 0 temp0_570 LIX
+.%var temp1 0 temp1_570 LIX
+.%scope end
+.%scope block 982 1005
+.%var pif_expression__expression_act_1_0_register_0 0 pif_expression__expression_act_1_0_register_0_571 LIX
+.%scope block 988 1001
+.%var pif_expression__expression_act_1_0_register_1 0 pif_expression__expression_act_1_0_register_1_572 LIX
+.%var pif_expression__expression_act_1_0_register_2 0 pif_expression__expression_act_1_0_register_2_572 LIX
+.%var pif_expression__expression_act_1_0_register_3 0 pif_expression__expression_act_1_0_register_3_572 LIX
+.%scope end
+.%scope end
+.%scope block 1010 1022
+.%var _pif_index 0 _pif_index_574 LIX
+.%scope block 1014 1021
+.%var _pif_xreg 81 _pif_xreg_575 LIW
+.%var _pif_hdrptr 74 _pif_hdrptr_575 LIX
+.%scope end
+.%scope end
+.%scope block 1024 1047
+.%var pif_expression__expression_act_1_1_register_0 0 pif_expression__expression_act_1_1_register_0_576 LIX
+.%scope block 1030 1043
+.%var pif_expression__expression_act_1_1_register_1 0 pif_expression__expression_act_1_1_register_1_577 LIX
+.%var pif_expression__expression_act_1_1_register_2 0 pif_expression__expression_act_1_1_register_2_577 LIX
+.%var pif_expression__expression_act_1_1_register_3 0 pif_expression__expression_act_1_1_register_3_577 LIX
+.%scope end
+.%scope end
+.%scope block 1052 1064
+.%var _pif_index 0 _pif_index_579 LIX
+.%scope block 1056 1063
+.%var _pif_xreg 82 _pif_xreg_580 LIW
+.%var _pif_hdrptr 77 _pif_hdrptr_580 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__arp_forward _pif_action_exec_ingress__arp_forward "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 1069 1133
+.%arg _pif_parrep 27 _pif_parrep_581_V$794
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_581_V$795
+.%arg _pif_debug 0 _pif_debug_581_V$796
+.%var _pif_return 32 _pif_return_581 LIX
+.%var _pif_act_data 83 _pif_act_data_581 LIX
+.%var _pif_ctldata 35 _pif_ctldata_581 LIX
+.%var standard_metadata 65 standard_metadata_581 LIX
+.%var ethernet 55 ethernet_581 LIX
+.%scope block 1077 1099
+.%var temp0 0 temp0_582 LIX
+.%var temp1 0 temp1_582 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq128 _pif_action_exec_egress__action_eq128 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 1135 1327
+.%arg _pif_parrep 27 _pif_parrep_587_V$7e1
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_587_V$7e2
+.%arg _pif_debug 0 _pif_debug_587_V$7e3
+.%var _pif_return 32 _pif_return_587 LIX
+.%var _pif_act_data 86 _pif_act_data_587 LIX
+.%var _pif_ctldata 35 _pif_ctldata_587 LIX
+.%var switch_local 37 switch_local_587 LIX
+.%var switch_id 51 switch_id_587 LIX
+.%var hopINT 47 hopINT_587 LIX
+.%var ipv4 45 ipv4_587 LIX
+.%var shimINT 49 shimINT_587 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_587 LIX
+.%scope block 1147 1169
+.%var temp0 0 temp0_588 LIX
+.%var temp1 0 temp1_588 LIX
+.%scope end
+.%scope block 1187 1194
+.%var _pif_flc_update_val 0 _pif_flc_update_val_593 LIX
+.%scope end
+.%scope block 1203 1226
+.%var pif_expression__expression_action_eq128_0_register_0 0 pif_expression__expression_action_eq128_0_register_0_598 LIX
+.%scope block 1209 1222
+.%var pif_expression__expression_action_eq128_0_register_1 0 pif_expression__expression_action_eq128_0_register_1_599 LIX
+.%var pif_expression__expression_action_eq128_0_register_2 0 pif_expression__expression_action_eq128_0_register_2_599 LIX
+.%var pif_expression__expression_action_eq128_0_register_3 0 pif_expression__expression_action_eq128_0_register_3_599 LIX
+.%scope end
+.%scope end
+.%scope block 1227 1254
+.%var pif_expression__expression_action_eq128_1_register_2 0 pif_expression__expression_action_eq128_1_register_2_600 LIX
+.%scope block 1233 1250
+.%var pif_expression__expression_action_eq128_1_register_0 0 pif_expression__expression_action_eq128_1_register_0_601 LIX
+.%var pif_expression__expression_action_eq128_1_register_1 0 pif_expression__expression_action_eq128_1_register_1_601 LIX
+.%scope end
+.%scope end
+.%scope block 1255 1282
+.%var pif_expression__expression_action_eq128_2_register_2 0 pif_expression__expression_action_eq128_2_register_2_602 LIX
+.%scope block 1261 1278
+.%var pif_expression__expression_action_eq128_2_register_0 0 pif_expression__expression_action_eq128_2_register_0_603 LIX
+.%var pif_expression__expression_action_eq128_2_register_1 0 pif_expression__expression_action_eq128_2_register_1_603 LIX
+.%scope end
+.%scope end
+.%scope block 1283 1316
+.%var pif_expression__expression_action_eq128_3_register_0 0 pif_expression__expression_action_eq128_3_register_0_604 LIX
+.%scope block 1289 1312
+.%var pif_expression__expression_action_eq128_3_register_1 0 pif_expression__expression_action_eq128_3_register_1_605 LIX
+.%var pif_expression__expression_action_eq128_3_register_2 0 pif_expression__expression_action_eq128_3_register_2_605 LIX
+.%var pif_expression__expression_action_eq128_3_register_3 0 pif_expression__expression_action_eq128_3_register_3_605 LIX
+.%scope end
+.%scope end
+.%scope block 1318 1325
+.%var _pif_flc_update_val 0 _pif_flc_update_val_606 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__drop _pif_action_exec_ingress__drop "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 1329 1371
+.%arg _pif_parrep 27 _pif_parrep_608_V$806
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_608_V$807
+.%arg _pif_debug 0 _pif_debug_608_V$808
+.%var _pif_return 32 _pif_return_608 LIX
+.%var _pif_act_data 88 _pif_act_data_608 LIX
+.%var _pif_ctldata 35 _pif_ctldata_608 LIX
+.%scope block 1335 1357
+.%var temp0 0 temp0_609 LIX
+.%var temp1 0 temp1_609 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq184 _pif_action_exec_egress__action_eq184 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 1373 1770
+.%arg _pif_parrep 27 _pif_parrep_611_V$817
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_611_V$818
+.%arg _pif_debug 0 _pif_debug_611_V$819
+.%var _pif_return 32 _pif_return_611 LIX
+.%var _pif_act_data 90 _pif_act_data_611 LIX
+.%var _pif_ctldata 35 _pif_ctldata_611 LIX
+.%var egressTimestamp 92 egressTimestamp_611 LIX
+.%var hop_latency 94 hop_latency_611 LIX
+.%var ipv4 45 ipv4_611 LIX
+.%var ingressTimestamp 96 ingressTimestamp_611 LIX
+.%var hopINT 47 hopINT_611 LIX
+.%var shimINT 49 shimINT_611 LIX
+.%var switch_local 37 switch_local_611 LIX
+.%var switch_id 51 switch_id_611 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_611 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_611 LIX
+.%scope block 1389 1411
+.%var temp0 0 temp0_612 LIX
+.%var temp1 0 temp1_612 LIX
+.%scope end
+.%scope block 1436 1443
+.%var _pif_flc_update_val 0 _pif_flc_update_val_620 LIX
+.%scope end
+.%scope block 1452 1475
+.%var pif_expression__expression_action_eq184_0_register_0 0 pif_expression__expression_action_eq184_0_register_0_625 LIX
+.%scope block 1458 1471
+.%var pif_expression__expression_action_eq184_0_register_1 0 pif_expression__expression_action_eq184_0_register_1_626 LIX
+.%var pif_expression__expression_action_eq184_0_register_2 0 pif_expression__expression_action_eq184_0_register_2_626 LIX
+.%var pif_expression__expression_action_eq184_0_register_3 0 pif_expression__expression_action_eq184_0_register_3_626 LIX
+.%scope end
+.%scope end
+.%scope block 1476 1503
+.%var pif_expression__expression_action_eq184_1_register_2 0 pif_expression__expression_action_eq184_1_register_2_627 LIX
+.%scope block 1482 1499
+.%var pif_expression__expression_action_eq184_1_register_0 0 pif_expression__expression_action_eq184_1_register_0_628 LIX
+.%var pif_expression__expression_action_eq184_1_register_1 0 pif_expression__expression_action_eq184_1_register_1_628 LIX
+.%scope end
+.%scope end
+.%scope block 1509 1513
+.%var curr_mac_time 98 curr_mac_time_630 LIX
+.%scope end
+.%scope block 1527 1581
+.%var pif_expression__expression_action_eq184_2_register_4 0 pif_expression__expression_action_eq184_2_register_4_636 LIX
+.%var pif_expression__expression_action_eq184_2_register_5 0 pif_expression__expression_action_eq184_2_register_5_636 LIX
+.%scope block 1534 1576
+.%var pif_expression__expression_action_eq184_2_register_0 0 pif_expression__expression_action_eq184_2_register_0_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_1 0 pif_expression__expression_action_eq184_2_register_1_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_2 0 pif_expression__expression_action_eq184_2_register_2_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_3 0 pif_expression__expression_action_eq184_2_register_3_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_6 0 pif_expression__expression_action_eq184_2_register_6_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_7 0 pif_expression__expression_action_eq184_2_register_7_637 LIX
+.%var pif_expression__expression_action_eq184_2_register_8 0 pif_expression__expression_action_eq184_2_register_8_637 LIX
+.%scope block 1550 1558
+.%var overflow 0 overflow_638 LIX
+.%scope end
+.%scope block 1559 1567
+.%var overflow 0 overflow_639 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 1582 1609
+.%var pif_expression__expression_action_eq184_3_register_2 0 pif_expression__expression_action_eq184_3_register_2_640 LIX
+.%scope block 1588 1605
+.%var pif_expression__expression_action_eq184_3_register_0 0 pif_expression__expression_action_eq184_3_register_0_641 LIX
+.%var pif_expression__expression_action_eq184_3_register_1 0 pif_expression__expression_action_eq184_3_register_1_641 LIX
+.%scope end
+.%scope end
+.%scope block 1626 1653
+.%var pif_expression__expression_action_eq184_4_register_2 0 pif_expression__expression_action_eq184_4_register_2_646 LIX
+.%scope block 1632 1649
+.%var pif_expression__expression_action_eq184_4_register_0 0 pif_expression__expression_action_eq184_4_register_0_647 LIX
+.%var pif_expression__expression_action_eq184_4_register_1 0 pif_expression__expression_action_eq184_4_register_1_647 LIX
+.%scope end
+.%scope end
+.%scope block 1670 1697
+.%var pif_expression__expression_action_eq184_5_register_2 0 pif_expression__expression_action_eq184_5_register_2_652 LIX
+.%scope block 1676 1693
+.%var pif_expression__expression_action_eq184_5_register_0 0 pif_expression__expression_action_eq184_5_register_0_653 LIX
+.%var pif_expression__expression_action_eq184_5_register_1 0 pif_expression__expression_action_eq184_5_register_1_653 LIX
+.%scope end
+.%scope end
+.%scope block 1698 1725
+.%var pif_expression__expression_action_eq184_6_register_2 0 pif_expression__expression_action_eq184_6_register_2_654 LIX
+.%scope block 1704 1721
+.%var pif_expression__expression_action_eq184_6_register_0 0 pif_expression__expression_action_eq184_6_register_0_655 LIX
+.%var pif_expression__expression_action_eq184_6_register_1 0 pif_expression__expression_action_eq184_6_register_1_655 LIX
+.%scope end
+.%scope end
+.%scope block 1726 1759
+.%var pif_expression__expression_action_eq184_7_register_0 0 pif_expression__expression_action_eq184_7_register_0_656 LIX
+.%scope block 1732 1755
+.%var pif_expression__expression_action_eq184_7_register_1 0 pif_expression__expression_action_eq184_7_register_1_657 LIX
+.%var pif_expression__expression_action_eq184_7_register_2 0 pif_expression__expression_action_eq184_7_register_2_657 LIX
+.%var pif_expression__expression_action_eq184_7_register_3 0 pif_expression__expression_action_eq184_7_register_3_657 LIX
+.%scope end
+.%scope end
+.%scope block 1761 1768
+.%var _pif_flc_update_val 0 _pif_flc_update_val_658 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq240 _pif_action_exec_egress__action_eq240 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 1772 2175
+.%arg _pif_parrep 27 _pif_parrep_660_V$857
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_660_V$858
+.%arg _pif_debug 0 _pif_debug_660_V$859
+.%var _pif_return 32 _pif_return_660 LIX
+.%var _pif_act_data 99 _pif_act_data_660 LIX
+.%var _pif_ctldata 35 _pif_ctldata_660 LIX
+.%var hop_latency 94 hop_latency_660 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_660 LIX
+.%var ipv4 45 ipv4_660 LIX
+.%var ingressTimestamp 96 ingressTimestamp_660 LIX
+.%var hopINT 47 hopINT_660 LIX
+.%var shimINT 49 shimINT_660 LIX
+.%var switch_local 37 switch_local_660 LIX
+.%var switch_id 51 switch_id_660 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_660 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_660 LIX
+.%scope block 1788 1810
+.%var temp0 0 temp0_661 LIX
+.%var temp1 0 temp1_661 LIX
+.%scope end
+.%scope block 1835 1842
+.%var _pif_flc_update_val 0 _pif_flc_update_val_669 LIX
+.%scope end
+.%scope block 1851 1874
+.%var pif_expression__expression_action_eq240_0_register_0 0 pif_expression__expression_action_eq240_0_register_0_674 LIX
+.%scope block 1857 1870
+.%var pif_expression__expression_action_eq240_0_register_1 0 pif_expression__expression_action_eq240_0_register_1_675 LIX
+.%var pif_expression__expression_action_eq240_0_register_2 0 pif_expression__expression_action_eq240_0_register_2_675 LIX
+.%var pif_expression__expression_action_eq240_0_register_3 0 pif_expression__expression_action_eq240_0_register_3_675 LIX
+.%scope end
+.%scope end
+.%scope block 1875 1902
+.%var pif_expression__expression_action_eq240_1_register_2 0 pif_expression__expression_action_eq240_1_register_2_676 LIX
+.%scope block 1881 1898
+.%var pif_expression__expression_action_eq240_1_register_0 0 pif_expression__expression_action_eq240_1_register_0_677 LIX
+.%var pif_expression__expression_action_eq240_1_register_1 0 pif_expression__expression_action_eq240_1_register_1_677 LIX
+.%scope end
+.%scope end
+.%scope block 1925 1952
+.%var pif_expression__expression_action_eq240_2_register_2 0 pif_expression__expression_action_eq240_2_register_2_683 LIX
+.%scope block 1931 1948
+.%var pif_expression__expression_action_eq240_2_register_0 0 pif_expression__expression_action_eq240_2_register_0_684 LIX
+.%var pif_expression__expression_action_eq240_2_register_1 0 pif_expression__expression_action_eq240_2_register_1_684 LIX
+.%scope end
+.%scope end
+.%scope block 1958 1962
+.%var curr_mac_time 98 curr_mac_time_686 LIX
+.%scope end
+.%scope block 1976 2030
+.%var pif_expression__expression_action_eq240_3_register_4 0 pif_expression__expression_action_eq240_3_register_4_692 LIX
+.%var pif_expression__expression_action_eq240_3_register_5 0 pif_expression__expression_action_eq240_3_register_5_692 LIX
+.%scope block 1983 2025
+.%var pif_expression__expression_action_eq240_3_register_0 0 pif_expression__expression_action_eq240_3_register_0_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_1 0 pif_expression__expression_action_eq240_3_register_1_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_2 0 pif_expression__expression_action_eq240_3_register_2_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_3 0 pif_expression__expression_action_eq240_3_register_3_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_6 0 pif_expression__expression_action_eq240_3_register_6_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_7 0 pif_expression__expression_action_eq240_3_register_7_693 LIX
+.%var pif_expression__expression_action_eq240_3_register_8 0 pif_expression__expression_action_eq240_3_register_8_693 LIX
+.%scope block 1999 2007
+.%var overflow 0 overflow_694 LIX
+.%scope end
+.%scope block 2008 2016
+.%var overflow 0 overflow_695 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 2031 2058
+.%var pif_expression__expression_action_eq240_4_register_2 0 pif_expression__expression_action_eq240_4_register_2_696 LIX
+.%scope block 2037 2054
+.%var pif_expression__expression_action_eq240_4_register_0 0 pif_expression__expression_action_eq240_4_register_0_697 LIX
+.%var pif_expression__expression_action_eq240_4_register_1 0 pif_expression__expression_action_eq240_4_register_1_697 LIX
+.%scope end
+.%scope end
+.%scope block 2075 2102
+.%var pif_expression__expression_action_eq240_5_register_2 0 pif_expression__expression_action_eq240_5_register_2_702 LIX
+.%scope block 2081 2098
+.%var pif_expression__expression_action_eq240_5_register_0 0 pif_expression__expression_action_eq240_5_register_0_703 LIX
+.%var pif_expression__expression_action_eq240_5_register_1 0 pif_expression__expression_action_eq240_5_register_1_703 LIX
+.%scope end
+.%scope end
+.%scope block 2103 2130
+.%var pif_expression__expression_action_eq240_6_register_2 0 pif_expression__expression_action_eq240_6_register_2_704 LIX
+.%scope block 2109 2126
+.%var pif_expression__expression_action_eq240_6_register_0 0 pif_expression__expression_action_eq240_6_register_0_705 LIX
+.%var pif_expression__expression_action_eq240_6_register_1 0 pif_expression__expression_action_eq240_6_register_1_705 LIX
+.%scope end
+.%scope end
+.%scope block 2131 2164
+.%var pif_expression__expression_action_eq240_7_register_0 0 pif_expression__expression_action_eq240_7_register_0_706 LIX
+.%scope block 2137 2160
+.%var pif_expression__expression_action_eq240_7_register_1 0 pif_expression__expression_action_eq240_7_register_1_707 LIX
+.%var pif_expression__expression_action_eq240_7_register_2 0 pif_expression__expression_action_eq240_7_register_2_707 LIX
+.%var pif_expression__expression_action_eq240_7_register_3 0 pif_expression__expression_action_eq240_7_register_3_707 LIX
+.%scope end
+.%scope end
+.%scope block 2166 2173
+.%var _pif_flc_update_val 0 _pif_flc_update_val_708 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq88 _pif_action_exec_egress__action_eq88 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 2177 2453
+.%arg _pif_parrep 27 _pif_parrep_710_V$897
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_710_V$898
+.%arg _pif_debug 0 _pif_debug_710_V$899
+.%var _pif_return 32 _pif_return_710 LIX
+.%var _pif_act_data 101 _pif_act_data_710 LIX
+.%var _pif_ctldata 35 _pif_ctldata_710 LIX
+.%var egressTimestamp 92 egressTimestamp_710 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_710 LIX
+.%var ipv4 45 ipv4_710 LIX
+.%var ingressTimestamp 96 ingressTimestamp_710 LIX
+.%var hopINT 47 hopINT_710 LIX
+.%var switch_local 37 switch_local_710 LIX
+.%var shimINT 49 shimINT_710 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_710 LIX
+.%scope block 2191 2213
+.%var temp0 0 temp0_711 LIX
+.%var temp1 0 temp1_711 LIX
+.%scope end
+.%scope block 2235 2242
+.%var _pif_flc_update_val 0 _pif_flc_update_val_718 LIX
+.%scope end
+.%scope block 2265 2292
+.%var pif_expression__expression_action_eq88_0_register_2 0 pif_expression__expression_action_eq88_0_register_2_725 LIX
+.%scope block 2271 2288
+.%var pif_expression__expression_action_eq88_0_register_0 0 pif_expression__expression_action_eq88_0_register_0_726 LIX
+.%var pif_expression__expression_action_eq88_0_register_1 0 pif_expression__expression_action_eq88_0_register_1_726 LIX
+.%scope end
+.%scope end
+.%scope block 2309 2336
+.%var pif_expression__expression_action_eq88_1_register_2 0 pif_expression__expression_action_eq88_1_register_2_731 LIX
+.%scope block 2315 2332
+.%var pif_expression__expression_action_eq88_1_register_0 0 pif_expression__expression_action_eq88_1_register_0_732 LIX
+.%var pif_expression__expression_action_eq88_1_register_1 0 pif_expression__expression_action_eq88_1_register_1_732 LIX
+.%scope end
+.%scope end
+.%scope block 2353 2380
+.%var pif_expression__expression_action_eq88_2_register_2 0 pif_expression__expression_action_eq88_2_register_2_737 LIX
+.%scope block 2359 2376
+.%var pif_expression__expression_action_eq88_2_register_0 0 pif_expression__expression_action_eq88_2_register_0_738 LIX
+.%var pif_expression__expression_action_eq88_2_register_1 0 pif_expression__expression_action_eq88_2_register_1_738 LIX
+.%scope end
+.%scope end
+.%scope block 2381 2408
+.%var pif_expression__expression_action_eq88_3_register_2 0 pif_expression__expression_action_eq88_3_register_2_739 LIX
+.%scope block 2387 2404
+.%var pif_expression__expression_action_eq88_3_register_0 0 pif_expression__expression_action_eq88_3_register_0_740 LIX
+.%var pif_expression__expression_action_eq88_3_register_1 0 pif_expression__expression_action_eq88_3_register_1_740 LIX
+.%scope end
+.%scope end
+.%scope block 2409 2442
+.%var pif_expression__expression_action_eq88_4_register_0 0 pif_expression__expression_action_eq88_4_register_0_741 LIX
+.%scope block 2415 2438
+.%var pif_expression__expression_action_eq88_4_register_1 0 pif_expression__expression_action_eq88_4_register_1_742 LIX
+.%var pif_expression__expression_action_eq88_4_register_2 0 pif_expression__expression_action_eq88_4_register_2_742 LIX
+.%var pif_expression__expression_action_eq88_4_register_3 0 pif_expression__expression_action_eq88_4_register_3_742 LIX
+.%scope end
+.%scope end
+.%scope block 2444 2451
+.%var _pif_flc_update_val 0 _pif_flc_update_val_743 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_ingress__ipv4_forward _pif_action_exec_ingress__ipv4_forward "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 2455 2574
+.%arg _pif_parrep 27 _pif_parrep_745_V$8c2
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_745_V$8c3
+.%arg _pif_debug 0 _pif_debug_745_V$8c4
+.%var _pif_return 32 _pif_return_745 LIX
+.%var _pif_act_data 103 _pif_act_data_745 LIX
+.%var _pif_ctldata 35 _pif_ctldata_745 LIX
+.%var standard_metadata 65 standard_metadata_745 LIX
+.%var ethernet 55 ethernet_745 LIX
+.%var ipv4 45 ipv4_745 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_745 LIX
+.%scope block 2465 2487
+.%var temp0 0 temp0_746 LIX
+.%var temp1 0 temp1_746 LIX
+.%scope end
+.%scope block 2501 2510
+.%var _pif_flc_update_val 0 _pif_flc_update_val_749 LIX
+.%scope end
+.%scope block 2534 2561
+.%var pif_expression__expression_ipv4_forward_0_register_2 0 pif_expression__expression_ipv4_forward_0_register_2_754 LIX
+.%scope block 2540 2557
+.%var pif_expression__expression_ipv4_forward_0_register_0 0 pif_expression__expression_ipv4_forward_0_register_0_755 LIX
+.%var pif_expression__expression_ipv4_forward_0_register_1 0 pif_expression__expression_ipv4_forward_0_register_1_755 LIX
+.%scope end
+.%scope end
+.%scope block 2563 2572
+.%var _pif_flc_update_val 0 _pif_flc_update_val_756 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq254 _pif_action_exec_egress__action_eq254 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 2576 3118
+.%arg _pif_parrep 27 _pif_parrep_758_V$918
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_758_V$919
+.%arg _pif_debug 0 _pif_debug_758_V$91a
+.%var _pif_return 32 _pif_return_758 LIX
+.%var _pif_act_data 106 _pif_act_data_758 LIX
+.%var _pif_ctldata 35 _pif_ctldata_758 LIX
+.%var egressTimestamp 92 egressTimestamp_758 LIX
+.%var countpackage 108 countpackage_758 LIX
+.%var hop_latency 94 hop_latency_758 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_758 LIX
+.%var ipv4 45 ipv4_758 LIX
+.%var ingressTimestamp 96 ingressTimestamp_758 LIX
+.%var hopINT 47 hopINT_758 LIX
+.%var shimINT 49 shimINT_758 LIX
+.%var bytepackage 110 bytepackage_758 LIX
+.%var switch_local 37 switch_local_758 LIX
+.%var switch_id 51 switch_id_758 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_758 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_758 LIX
+.%scope block 2595 2617
+.%var temp0 0 temp0_759 LIX
+.%var temp1 0 temp1_759 LIX
+.%scope end
+.%scope block 2648 2655
+.%var _pif_flc_update_val 0 _pif_flc_update_val_770 LIX
+.%scope end
+.%scope block 2664 2687
+.%var pif_expression__expression_action_eq254_0_register_0 0 pif_expression__expression_action_eq254_0_register_0_775 LIX
+.%scope block 2670 2683
+.%var pif_expression__expression_action_eq254_0_register_1 0 pif_expression__expression_action_eq254_0_register_1_776 LIX
+.%var pif_expression__expression_action_eq254_0_register_2 0 pif_expression__expression_action_eq254_0_register_2_776 LIX
+.%var pif_expression__expression_action_eq254_0_register_3 0 pif_expression__expression_action_eq254_0_register_3_776 LIX
+.%scope end
+.%scope end
+.%scope block 2688 2715
+.%var pif_expression__expression_action_eq254_1_register_2 0 pif_expression__expression_action_eq254_1_register_2_777 LIX
+.%scope block 2694 2711
+.%var pif_expression__expression_action_eq254_1_register_0 0 pif_expression__expression_action_eq254_1_register_0_778 LIX
+.%var pif_expression__expression_action_eq254_1_register_1 0 pif_expression__expression_action_eq254_1_register_1_778 LIX
+.%scope end
+.%scope end
+.%scope block 2738 2765
+.%var pif_expression__expression_action_eq254_2_register_2 0 pif_expression__expression_action_eq254_2_register_2_784 LIX
+.%scope block 2744 2761
+.%var pif_expression__expression_action_eq254_2_register_0 0 pif_expression__expression_action_eq254_2_register_0_785 LIX
+.%var pif_expression__expression_action_eq254_2_register_1 0 pif_expression__expression_action_eq254_2_register_1_785 LIX
+.%scope end
+.%scope end
+.%scope block 2771 2775
+.%var curr_mac_time 98 curr_mac_time_787 LIX
+.%scope end
+.%scope block 2789 2843
+.%var pif_expression__expression_action_eq254_3_register_4 0 pif_expression__expression_action_eq254_3_register_4_793 LIX
+.%var pif_expression__expression_action_eq254_3_register_5 0 pif_expression__expression_action_eq254_3_register_5_793 LIX
+.%scope block 2796 2838
+.%var pif_expression__expression_action_eq254_3_register_0 0 pif_expression__expression_action_eq254_3_register_0_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_1 0 pif_expression__expression_action_eq254_3_register_1_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_2 0 pif_expression__expression_action_eq254_3_register_2_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_3 0 pif_expression__expression_action_eq254_3_register_3_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_6 0 pif_expression__expression_action_eq254_3_register_6_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_7 0 pif_expression__expression_action_eq254_3_register_7_794 LIX
+.%var pif_expression__expression_action_eq254_3_register_8 0 pif_expression__expression_action_eq254_3_register_8_794 LIX
+.%scope block 2812 2820
+.%var overflow 0 overflow_795 LIX
+.%scope end
+.%scope block 2821 2829
+.%var overflow 0 overflow_796 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 2844 2871
+.%var pif_expression__expression_action_eq254_4_register_2 0 pif_expression__expression_action_eq254_4_register_2_797 LIX
+.%scope block 2850 2867
+.%var pif_expression__expression_action_eq254_4_register_0 0 pif_expression__expression_action_eq254_4_register_0_798 LIX
+.%var pif_expression__expression_action_eq254_4_register_1 0 pif_expression__expression_action_eq254_4_register_1_798 LIX
+.%scope end
+.%scope end
+.%scope block 2888 2915
+.%var pif_expression__expression_action_eq254_5_register_2 0 pif_expression__expression_action_eq254_5_register_2_803 LIX
+.%scope block 2894 2911
+.%var pif_expression__expression_action_eq254_5_register_0 0 pif_expression__expression_action_eq254_5_register_0_804 LIX
+.%var pif_expression__expression_action_eq254_5_register_1 0 pif_expression__expression_action_eq254_5_register_1_804 LIX
+.%scope end
+.%scope end
+.%scope block 2932 2959
+.%var pif_expression__expression_action_eq254_6_register_2 0 pif_expression__expression_action_eq254_6_register_2_809 LIX
+.%scope block 2938 2955
+.%var pif_expression__expression_action_eq254_6_register_0 0 pif_expression__expression_action_eq254_6_register_0_810 LIX
+.%var pif_expression__expression_action_eq254_6_register_1 0 pif_expression__expression_action_eq254_6_register_1_810 LIX
+.%scope end
+.%scope end
+.%scope block 2975 3002
+.%var pif_expression__expression_action_eq254_7_register_2 0 pif_expression__expression_action_eq254_7_register_2_815 LIX
+.%scope block 2981 2998
+.%var pif_expression__expression_action_eq254_7_register_0 0 pif_expression__expression_action_eq254_7_register_0_816 LIX
+.%var pif_expression__expression_action_eq254_7_register_1 0 pif_expression__expression_action_eq254_7_register_1_816 LIX
+.%scope end
+.%scope end
+.%scope block 3018 3045
+.%var pif_expression__expression_action_eq254_8_register_2 0 pif_expression__expression_action_eq254_8_register_2_821 LIX
+.%scope block 3024 3041
+.%var pif_expression__expression_action_eq254_8_register_0 0 pif_expression__expression_action_eq254_8_register_0_822 LIX
+.%var pif_expression__expression_action_eq254_8_register_1 0 pif_expression__expression_action_eq254_8_register_1_822 LIX
+.%scope end
+.%scope end
+.%scope block 3046 3073
+.%var pif_expression__expression_action_eq254_9_register_2 0 pif_expression__expression_action_eq254_9_register_2_823 LIX
+.%scope block 3052 3069
+.%var pif_expression__expression_action_eq254_9_register_0 0 pif_expression__expression_action_eq254_9_register_0_824 LIX
+.%var pif_expression__expression_action_eq254_9_register_1 0 pif_expression__expression_action_eq254_9_register_1_824 LIX
+.%scope end
+.%scope end
+.%scope block 3074 3107
+.%var pif_expression__expression_action_eq254_10_register_0 0 pif_expression__expression_action_eq254_10_register_0_825 LIX
+.%scope block 3080 3103
+.%var pif_expression__expression_action_eq254_10_register_1 0 pif_expression__expression_action_eq254_10_register_1_826 LIX
+.%var pif_expression__expression_action_eq254_10_register_2 0 pif_expression__expression_action_eq254_10_register_2_826 LIX
+.%var pif_expression__expression_action_eq254_10_register_3 0 pif_expression__expression_action_eq254_10_register_3_826 LIX
+.%scope end
+.%scope end
+.%scope block 3109 3116
+.%var _pif_flc_update_val 0 _pif_flc_update_val_827 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq248 _pif_action_exec_egress__action_eq248 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 3120 3570
+.%arg _pif_parrep 27 _pif_parrep_829_V$964
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_829_V$965
+.%arg _pif_debug 0 _pif_debug_829_V$966
+.%var _pif_return 32 _pif_return_829 LIX
+.%var _pif_act_data 112 _pif_act_data_829 LIX
+.%var _pif_ctldata 35 _pif_ctldata_829 LIX
+.%var egressTimestamp 92 egressTimestamp_829 LIX
+.%var hop_latency 94 hop_latency_829 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_829 LIX
+.%var ipv4 45 ipv4_829 LIX
+.%var ingressTimestamp 96 ingressTimestamp_829 LIX
+.%var hopINT 47 hopINT_829 LIX
+.%var shimINT 49 shimINT_829 LIX
+.%var switch_local 37 switch_local_829 LIX
+.%var switch_id 51 switch_id_829 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_829 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_829 LIX
+.%scope block 3137 3159
+.%var temp0 0 temp0_830 LIX
+.%var temp1 0 temp1_830 LIX
+.%scope end
+.%scope block 3186 3193
+.%var _pif_flc_update_val 0 _pif_flc_update_val_839 LIX
+.%scope end
+.%scope block 3202 3225
+.%var pif_expression__expression_action_eq248_0_register_0 0 pif_expression__expression_action_eq248_0_register_0_844 LIX
+.%scope block 3208 3221
+.%var pif_expression__expression_action_eq248_0_register_1 0 pif_expression__expression_action_eq248_0_register_1_845 LIX
+.%var pif_expression__expression_action_eq248_0_register_2 0 pif_expression__expression_action_eq248_0_register_2_845 LIX
+.%var pif_expression__expression_action_eq248_0_register_3 0 pif_expression__expression_action_eq248_0_register_3_845 LIX
+.%scope end
+.%scope end
+.%scope block 3226 3253
+.%var pif_expression__expression_action_eq248_1_register_2 0 pif_expression__expression_action_eq248_1_register_2_846 LIX
+.%scope block 3232 3249
+.%var pif_expression__expression_action_eq248_1_register_0 0 pif_expression__expression_action_eq248_1_register_0_847 LIX
+.%var pif_expression__expression_action_eq248_1_register_1 0 pif_expression__expression_action_eq248_1_register_1_847 LIX
+.%scope end
+.%scope end
+.%scope block 3276 3303
+.%var pif_expression__expression_action_eq248_2_register_2 0 pif_expression__expression_action_eq248_2_register_2_853 LIX
+.%scope block 3282 3299
+.%var pif_expression__expression_action_eq248_2_register_0 0 pif_expression__expression_action_eq248_2_register_0_854 LIX
+.%var pif_expression__expression_action_eq248_2_register_1 0 pif_expression__expression_action_eq248_2_register_1_854 LIX
+.%scope end
+.%scope end
+.%scope block 3309 3313
+.%var curr_mac_time 98 curr_mac_time_856 LIX
+.%scope end
+.%scope block 3327 3381
+.%var pif_expression__expression_action_eq248_3_register_4 0 pif_expression__expression_action_eq248_3_register_4_862 LIX
+.%var pif_expression__expression_action_eq248_3_register_5 0 pif_expression__expression_action_eq248_3_register_5_862 LIX
+.%scope block 3334 3376
+.%var pif_expression__expression_action_eq248_3_register_0 0 pif_expression__expression_action_eq248_3_register_0_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_1 0 pif_expression__expression_action_eq248_3_register_1_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_2 0 pif_expression__expression_action_eq248_3_register_2_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_3 0 pif_expression__expression_action_eq248_3_register_3_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_6 0 pif_expression__expression_action_eq248_3_register_6_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_7 0 pif_expression__expression_action_eq248_3_register_7_863 LIX
+.%var pif_expression__expression_action_eq248_3_register_8 0 pif_expression__expression_action_eq248_3_register_8_863 LIX
+.%scope block 3350 3358
+.%var overflow 0 overflow_864 LIX
+.%scope end
+.%scope block 3359 3367
+.%var overflow 0 overflow_865 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 3382 3409
+.%var pif_expression__expression_action_eq248_4_register_2 0 pif_expression__expression_action_eq248_4_register_2_866 LIX
+.%scope block 3388 3405
+.%var pif_expression__expression_action_eq248_4_register_0 0 pif_expression__expression_action_eq248_4_register_0_867 LIX
+.%var pif_expression__expression_action_eq248_4_register_1 0 pif_expression__expression_action_eq248_4_register_1_867 LIX
+.%scope end
+.%scope end
+.%scope block 3426 3453
+.%var pif_expression__expression_action_eq248_5_register_2 0 pif_expression__expression_action_eq248_5_register_2_872 LIX
+.%scope block 3432 3449
+.%var pif_expression__expression_action_eq248_5_register_0 0 pif_expression__expression_action_eq248_5_register_0_873 LIX
+.%var pif_expression__expression_action_eq248_5_register_1 0 pif_expression__expression_action_eq248_5_register_1_873 LIX
+.%scope end
+.%scope end
+.%scope block 3470 3497
+.%var pif_expression__expression_action_eq248_6_register_2 0 pif_expression__expression_action_eq248_6_register_2_878 LIX
+.%scope block 3476 3493
+.%var pif_expression__expression_action_eq248_6_register_0 0 pif_expression__expression_action_eq248_6_register_0_879 LIX
+.%var pif_expression__expression_action_eq248_6_register_1 0 pif_expression__expression_action_eq248_6_register_1_879 LIX
+.%scope end
+.%scope end
+.%scope block 3498 3525
+.%var pif_expression__expression_action_eq248_7_register_2 0 pif_expression__expression_action_eq248_7_register_2_880 LIX
+.%scope block 3504 3521
+.%var pif_expression__expression_action_eq248_7_register_0 0 pif_expression__expression_action_eq248_7_register_0_881 LIX
+.%var pif_expression__expression_action_eq248_7_register_1 0 pif_expression__expression_action_eq248_7_register_1_881 LIX
+.%scope end
+.%scope end
+.%scope block 3526 3559
+.%var pif_expression__expression_action_eq248_8_register_0 0 pif_expression__expression_action_eq248_8_register_0_882 LIX
+.%scope block 3532 3555
+.%var pif_expression__expression_action_eq248_8_register_1 0 pif_expression__expression_action_eq248_8_register_1_883 LIX
+.%var pif_expression__expression_action_eq248_8_register_2 0 pif_expression__expression_action_eq248_8_register_2_883 LIX
+.%var pif_expression__expression_action_eq248_8_register_3 0 pif_expression__expression_action_eq248_8_register_3_883 LIX
+.%scope end
+.%scope end
+.%scope block 3561 3568
+.%var _pif_flc_update_val 0 _pif_flc_update_val_884 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq160 _pif_action_exec_egress__action_eq160 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 3572 3875
+.%arg _pif_parrep 27 _pif_parrep_886_V$9a8
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_886_V$9a9
+.%arg _pif_debug 0 _pif_debug_886_V$9aa
+.%var _pif_return 32 _pif_return_886 LIX
+.%var _pif_act_data 114 _pif_act_data_886 LIX
+.%var _pif_ctldata 35 _pif_ctldata_886 LIX
+.%var hop_latency 94 hop_latency_886 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_886 LIX
+.%var hopINT 47 hopINT_886 LIX
+.%var shimINT 49 shimINT_886 LIX
+.%var switch_local 37 switch_local_886 LIX
+.%var switch_id 51 switch_id_886 LIX
+.%var ipv4 45 ipv4_886 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_886 LIX
+.%scope block 3586 3608
+.%var temp0 0 temp0_887 LIX
+.%var temp1 0 temp1_887 LIX
+.%scope end
+.%scope block 3629 3636
+.%var _pif_flc_update_val 0 _pif_flc_update_val_893 LIX
+.%scope end
+.%scope block 3645 3668
+.%var pif_expression__expression_action_eq160_0_register_0 0 pif_expression__expression_action_eq160_0_register_0_898 LIX
+.%scope block 3651 3664
+.%var pif_expression__expression_action_eq160_0_register_1 0 pif_expression__expression_action_eq160_0_register_1_899 LIX
+.%var pif_expression__expression_action_eq160_0_register_2 0 pif_expression__expression_action_eq160_0_register_2_899 LIX
+.%var pif_expression__expression_action_eq160_0_register_3 0 pif_expression__expression_action_eq160_0_register_3_899 LIX
+.%scope end
+.%scope end
+.%scope block 3669 3696
+.%var pif_expression__expression_action_eq160_1_register_2 0 pif_expression__expression_action_eq160_1_register_2_900 LIX
+.%scope block 3675 3692
+.%var pif_expression__expression_action_eq160_1_register_0 0 pif_expression__expression_action_eq160_1_register_0_901 LIX
+.%var pif_expression__expression_action_eq160_1_register_1 0 pif_expression__expression_action_eq160_1_register_1_901 LIX
+.%scope end
+.%scope end
+.%scope block 3702 3706
+.%var curr_mac_time 98 curr_mac_time_903 LIX
+.%scope end
+.%scope block 3720 3774
+.%var pif_expression__expression_action_eq160_2_register_4 0 pif_expression__expression_action_eq160_2_register_4_909 LIX
+.%var pif_expression__expression_action_eq160_2_register_5 0 pif_expression__expression_action_eq160_2_register_5_909 LIX
+.%scope block 3727 3769
+.%var pif_expression__expression_action_eq160_2_register_0 0 pif_expression__expression_action_eq160_2_register_0_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_1 0 pif_expression__expression_action_eq160_2_register_1_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_2 0 pif_expression__expression_action_eq160_2_register_2_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_3 0 pif_expression__expression_action_eq160_2_register_3_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_6 0 pif_expression__expression_action_eq160_2_register_6_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_7 0 pif_expression__expression_action_eq160_2_register_7_910 LIX
+.%var pif_expression__expression_action_eq160_2_register_8 0 pif_expression__expression_action_eq160_2_register_8_910 LIX
+.%scope block 3743 3751
+.%var overflow 0 overflow_911 LIX
+.%scope end
+.%scope block 3752 3760
+.%var overflow 0 overflow_912 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 3775 3802
+.%var pif_expression__expression_action_eq160_3_register_2 0 pif_expression__expression_action_eq160_3_register_2_913 LIX
+.%scope block 3781 3798
+.%var pif_expression__expression_action_eq160_3_register_0 0 pif_expression__expression_action_eq160_3_register_0_914 LIX
+.%var pif_expression__expression_action_eq160_3_register_1 0 pif_expression__expression_action_eq160_3_register_1_914 LIX
+.%scope end
+.%scope end
+.%scope block 3803 3830
+.%var pif_expression__expression_action_eq160_4_register_2 0 pif_expression__expression_action_eq160_4_register_2_915 LIX
+.%scope block 3809 3826
+.%var pif_expression__expression_action_eq160_4_register_0 0 pif_expression__expression_action_eq160_4_register_0_916 LIX
+.%var pif_expression__expression_action_eq160_4_register_1 0 pif_expression__expression_action_eq160_4_register_1_916 LIX
+.%scope end
+.%scope end
+.%scope block 3831 3864
+.%var pif_expression__expression_action_eq160_5_register_0 0 pif_expression__expression_action_eq160_5_register_0_917 LIX
+.%scope block 3837 3860
+.%var pif_expression__expression_action_eq160_5_register_1 0 pif_expression__expression_action_eq160_5_register_1_918 LIX
+.%var pif_expression__expression_action_eq160_5_register_2 0 pif_expression__expression_action_eq160_5_register_2_918 LIX
+.%var pif_expression__expression_action_eq160_5_register_3 0 pif_expression__expression_action_eq160_5_register_3_918 LIX
+.%scope end
+.%scope end
+.%scope block 3866 3873
+.%var _pif_flc_update_val 0 _pif_flc_update_val_919 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq224 _pif_action_exec_egress__action_eq224 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 3877 4233
+.%arg _pif_parrep 27 _pif_parrep_921_V$9e0
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_921_V$9e1
+.%arg _pif_debug 0 _pif_debug_921_V$9e2
+.%var _pif_return 32 _pif_return_921 LIX
+.%var _pif_act_data 116 _pif_act_data_921 LIX
+.%var _pif_ctldata 35 _pif_ctldata_921 LIX
+.%var hop_latency 94 hop_latency_921 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_921 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_921 LIX
+.%var hopINT 47 hopINT_921 LIX
+.%var shimINT 49 shimINT_921 LIX
+.%var switch_local 37 switch_local_921 LIX
+.%var switch_id 51 switch_id_921 LIX
+.%var ipv4 45 ipv4_921 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_921 LIX
+.%scope block 3892 3914
+.%var temp0 0 temp0_922 LIX
+.%var temp1 0 temp1_922 LIX
+.%scope end
+.%scope block 3937 3944
+.%var _pif_flc_update_val 0 _pif_flc_update_val_929 LIX
+.%scope end
+.%scope block 3953 3976
+.%var pif_expression__expression_action_eq224_0_register_0 0 pif_expression__expression_action_eq224_0_register_0_934 LIX
+.%scope block 3959 3972
+.%var pif_expression__expression_action_eq224_0_register_1 0 pif_expression__expression_action_eq224_0_register_1_935 LIX
+.%var pif_expression__expression_action_eq224_0_register_2 0 pif_expression__expression_action_eq224_0_register_2_935 LIX
+.%var pif_expression__expression_action_eq224_0_register_3 0 pif_expression__expression_action_eq224_0_register_3_935 LIX
+.%scope end
+.%scope end
+.%scope block 3977 4004
+.%var pif_expression__expression_action_eq224_1_register_2 0 pif_expression__expression_action_eq224_1_register_2_936 LIX
+.%scope block 3983 4000
+.%var pif_expression__expression_action_eq224_1_register_0 0 pif_expression__expression_action_eq224_1_register_0_937 LIX
+.%var pif_expression__expression_action_eq224_1_register_1 0 pif_expression__expression_action_eq224_1_register_1_937 LIX
+.%scope end
+.%scope end
+.%scope block 4027 4054
+.%var pif_expression__expression_action_eq224_2_register_2 0 pif_expression__expression_action_eq224_2_register_2_943 LIX
+.%scope block 4033 4050
+.%var pif_expression__expression_action_eq224_2_register_0 0 pif_expression__expression_action_eq224_2_register_0_944 LIX
+.%var pif_expression__expression_action_eq224_2_register_1 0 pif_expression__expression_action_eq224_2_register_1_944 LIX
+.%scope end
+.%scope end
+.%scope block 4060 4064
+.%var curr_mac_time 98 curr_mac_time_946 LIX
+.%scope end
+.%scope block 4078 4132
+.%var pif_expression__expression_action_eq224_3_register_4 0 pif_expression__expression_action_eq224_3_register_4_952 LIX
+.%var pif_expression__expression_action_eq224_3_register_5 0 pif_expression__expression_action_eq224_3_register_5_952 LIX
+.%scope block 4085 4127
+.%var pif_expression__expression_action_eq224_3_register_0 0 pif_expression__expression_action_eq224_3_register_0_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_1 0 pif_expression__expression_action_eq224_3_register_1_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_2 0 pif_expression__expression_action_eq224_3_register_2_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_3 0 pif_expression__expression_action_eq224_3_register_3_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_6 0 pif_expression__expression_action_eq224_3_register_6_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_7 0 pif_expression__expression_action_eq224_3_register_7_953 LIX
+.%var pif_expression__expression_action_eq224_3_register_8 0 pif_expression__expression_action_eq224_3_register_8_953 LIX
+.%scope block 4101 4109
+.%var overflow 0 overflow_954 LIX
+.%scope end
+.%scope block 4110 4118
+.%var overflow 0 overflow_955 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 4133 4160
+.%var pif_expression__expression_action_eq224_4_register_2 0 pif_expression__expression_action_eq224_4_register_2_956 LIX
+.%scope block 4139 4156
+.%var pif_expression__expression_action_eq224_4_register_0 0 pif_expression__expression_action_eq224_4_register_0_957 LIX
+.%var pif_expression__expression_action_eq224_4_register_1 0 pif_expression__expression_action_eq224_4_register_1_957 LIX
+.%scope end
+.%scope end
+.%scope block 4161 4188
+.%var pif_expression__expression_action_eq224_5_register_2 0 pif_expression__expression_action_eq224_5_register_2_958 LIX
+.%scope block 4167 4184
+.%var pif_expression__expression_action_eq224_5_register_0 0 pif_expression__expression_action_eq224_5_register_0_959 LIX
+.%var pif_expression__expression_action_eq224_5_register_1 0 pif_expression__expression_action_eq224_5_register_1_959 LIX
+.%scope end
+.%scope end
+.%scope block 4189 4222
+.%var pif_expression__expression_action_eq224_6_register_0 0 pif_expression__expression_action_eq224_6_register_0_960 LIX
+.%scope block 4195 4218
+.%var pif_expression__expression_action_eq224_6_register_1 0 pif_expression__expression_action_eq224_6_register_1_961 LIX
+.%var pif_expression__expression_action_eq224_6_register_2 0 pif_expression__expression_action_eq224_6_register_2_961 LIX
+.%var pif_expression__expression_action_eq224_6_register_3 0 pif_expression__expression_action_eq224_6_register_3_961 LIX
+.%scope end
+.%scope end
+.%scope block 4224 4231
+.%var _pif_flc_update_val 0 _pif_flc_update_val_962 LIX
+.%scope end
+.%scope end
+.%scope function pif_action_exec_egress__action_eq252 _pif_action_exec_egress__action_eq252 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_actions.c" 4235 4731
+.%arg _pif_parrep 27 _pif_parrep_964_V$a1c
+.%arg _pif_actdatabuf 28 _pif_actdatabuf_964_V$a1d
+.%arg _pif_debug 0 _pif_debug_964_V$a1e
+.%var _pif_return 32 _pif_return_964 LIX
+.%var _pif_act_data 118 _pif_act_data_964 LIX
+.%var _pif_ctldata 35 _pif_ctldata_964 LIX
+.%var egressTimestamp 92 egressTimestamp_964 LIX
+.%var countpackage 108 countpackage_964 LIX
+.%var hop_latency 94 hop_latency_964 LIX
+.%var int_ingress_egress_ports 43 int_ingress_egress_ports_964 LIX
+.%var ipv4 45 ipv4_964 LIX
+.%var ingressTimestamp 96 ingressTimestamp_964 LIX
+.%var hopINT 47 hopINT_964 LIX
+.%var shimINT 49 shimINT_964 LIX
+.%var switch_local 37 switch_local_964 LIX
+.%var switch_id 51 switch_id_964 LIX
+.%var intrinsic_metadata 39 intrinsic_metadata_964 LIX
+.%var _pif_flc_val_calc 0 _pif_flc_val_calc_964 LIX
+.%scope block 4253 4275
+.%var temp0 0 temp0_965 LIX
+.%var temp1 0 temp1_965 LIX
+.%scope end
+.%scope block 4304 4311
+.%var _pif_flc_update_val 0 _pif_flc_update_val_975 LIX
+.%scope end
+.%scope block 4320 4343
+.%var pif_expression__expression_action_eq252_0_register_0 0 pif_expression__expression_action_eq252_0_register_0_980 LIX
+.%scope block 4326 4339
+.%var pif_expression__expression_action_eq252_0_register_1 0 pif_expression__expression_action_eq252_0_register_1_981 LIX
+.%var pif_expression__expression_action_eq252_0_register_2 0 pif_expression__expression_action_eq252_0_register_2_981 LIX
+.%var pif_expression__expression_action_eq252_0_register_3 0 pif_expression__expression_action_eq252_0_register_3_981 LIX
+.%scope end
+.%scope end
+.%scope block 4344 4371
+.%var pif_expression__expression_action_eq252_1_register_2 0 pif_expression__expression_action_eq252_1_register_2_982 LIX
+.%scope block 4350 4367
+.%var pif_expression__expression_action_eq252_1_register_0 0 pif_expression__expression_action_eq252_1_register_0_983 LIX
+.%var pif_expression__expression_action_eq252_1_register_1 0 pif_expression__expression_action_eq252_1_register_1_983 LIX
+.%scope end
+.%scope end
+.%scope block 4394 4421
+.%var pif_expression__expression_action_eq252_2_register_2 0 pif_expression__expression_action_eq252_2_register_2_989 LIX
+.%scope block 4400 4417
+.%var pif_expression__expression_action_eq252_2_register_0 0 pif_expression__expression_action_eq252_2_register_0_990 LIX
+.%var pif_expression__expression_action_eq252_2_register_1 0 pif_expression__expression_action_eq252_2_register_1_990 LIX
+.%scope end
+.%scope end
+.%scope block 4427 4431
+.%var curr_mac_time 98 curr_mac_time_992 LIX
+.%scope end
+.%scope block 4445 4499
+.%var pif_expression__expression_action_eq252_3_register_4 0 pif_expression__expression_action_eq252_3_register_4_998 LIX
+.%var pif_expression__expression_action_eq252_3_register_5 0 pif_expression__expression_action_eq252_3_register_5_998 LIX
+.%scope block 4452 4494
+.%var pif_expression__expression_action_eq252_3_register_0 0 pif_expression__expression_action_eq252_3_register_0_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_1 0 pif_expression__expression_action_eq252_3_register_1_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_2 0 pif_expression__expression_action_eq252_3_register_2_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_3 0 pif_expression__expression_action_eq252_3_register_3_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_6 0 pif_expression__expression_action_eq252_3_register_6_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_7 0 pif_expression__expression_action_eq252_3_register_7_999 LIX
+.%var pif_expression__expression_action_eq252_3_register_8 0 pif_expression__expression_action_eq252_3_register_8_999 LIX
+.%scope block 4468 4476
+.%var overflow 0 overflow_1000 LIX
+.%scope end
+.%scope block 4477 4485
+.%var overflow 0 overflow_1001 LIX
+.%scope end
+.%scope end
+.%scope end
+.%scope block 4500 4527
+.%var pif_expression__expression_action_eq252_4_register_2 0 pif_expression__expression_action_eq252_4_register_2_1002 LIX
+.%scope block 4506 4523
+.%var pif_expression__expression_action_eq252_4_register_0 0 pif_expression__expression_action_eq252_4_register_0_1003 LIX
+.%var pif_expression__expression_action_eq252_4_register_1 0 pif_expression__expression_action_eq252_4_register_1_1003 LIX
+.%scope end
+.%scope end
+.%scope block 4544 4571
+.%var pif_expression__expression_action_eq252_5_register_2 0 pif_expression__expression_action_eq252_5_register_2_1008 LIX
+.%scope block 4550 4567
+.%var pif_expression__expression_action_eq252_5_register_0 0 pif_expression__expression_action_eq252_5_register_0_1009 LIX
+.%var pif_expression__expression_action_eq252_5_register_1 0 pif_expression__expression_action_eq252_5_register_1_1009 LIX
+.%scope end
+.%scope end
+.%scope block 4588 4615
+.%var pif_expression__expression_action_eq252_6_register_2 0 pif_expression__expression_action_eq252_6_register_2_1014 LIX
+.%scope block 4594 4611
+.%var pif_expression__expression_action_eq252_6_register_0 0 pif_expression__expression_action_eq252_6_register_0_1015 LIX
+.%var pif_expression__expression_action_eq252_6_register_1 0 pif_expression__expression_action_eq252_6_register_1_1015 LIX
+.%scope end
+.%scope end
+.%scope block 4631 4658
+.%var pif_expression__expression_action_eq252_7_register_2 0 pif_expression__expression_action_eq252_7_register_2_1020 LIX
+.%scope block 4637 4654
+.%var pif_expression__expression_action_eq252_7_register_0 0 pif_expression__expression_action_eq252_7_register_0_1021 LIX
+.%var pif_expression__expression_action_eq252_7_register_1 0 pif_expression__expression_action_eq252_7_register_1_1021 LIX
+.%scope end
+.%scope end
+.%scope block 4659 4686
+.%var pif_expression__expression_action_eq252_8_register_2 0 pif_expression__expression_action_eq252_8_register_2_1022 LIX
+.%scope block 4665 4682
+.%var pif_expression__expression_action_eq252_8_register_0 0 pif_expression__expression_action_eq252_8_register_0_1023 LIX
+.%var pif_expression__expression_action_eq252_8_register_1 0 pif_expression__expression_action_eq252_8_register_1_1023 LIX
+.%scope end
+.%scope end
+.%scope block 4687 4720
+.%var pif_expression__expression_action_eq252_9_register_0 0 pif_expression__expression_action_eq252_9_register_0_1024 LIX
+.%scope block 4693 4716
+.%var pif_expression__expression_action_eq252_9_register_1 0 pif_expression__expression_action_eq252_9_register_1_1025 LIX
+.%var pif_expression__expression_action_eq252_9_register_2 0 pif_expression__expression_action_eq252_9_register_2_1025 LIX
+.%var pif_expression__expression_action_eq252_9_register_3 0 pif_expression__expression_action_eq252_9_register_3_1025 LIX
+.%scope end
+.%scope end
+.%scope block 4722 4729
+.%var _pif_flc_update_val 0 _pif_flc_update_val_1026 LIX
+.%scope end
+.%scope end
+.%type U4
+.%type S4 {
+__reserved_16 0:16:16 0;
+source 0:4:12 0;
+type 0:0:4 0;
+}
+.%type S4 {
+__reserved_21 0:21:11 0;
+overflow 0:20:1 0;
+hwm 0:16:4 0;
+__reserved_12 0:12:4 0;
+read 0:8:4 0;
+__reserved_4 0:4:4 0;
+write 0:0:4 0;
+}
+.%type A16 4
+.%type U1
+.%type A32768 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A16 4
+.%type A2048 4
+.%type A41943040 4
+.%type A10485760 4
+.%type S8 pif_pkt_specific{
+__unnamed 0 15;
+}
+.%type S8 {
+__unnamed 0 16;
+_raw 0 17;
+}
+.%type S8 {
+resv3 0:24:8 0;
+trunc_len 0:10:14 0;
+pkt_pl_off 0:0:10 0;
+calc_fld_bmsk 4 0;
+}
+.%type A8 0
+.%type A32 19
+.%type S4 pif_header_bytecountingress{
+value 0:0:32 0;
+}
+.%type A32 21
+.%type S4 pif_header_ingresscount{
+value 0:0:32 0;
+}
+.%type S16 pkt_clone_destination{
+ctm_pkt_num 0 0;
+mu_ptr 8 23;
+}
+.%type U8
+.%type A136 23
+.%type S16 mac_time_state{
+mac_time_s 0 0;
+mac_time_ns 4 0;
+me_time 8 0;
+conv_mult 12 26;
+conv_rshift 14 26;
+}
+.%type U2
+.%type P6 0
+.%type P2 0
+.%type P2 30
+.%type S4 pif_action_opdata{
+__unnamed 0 31;
+val32 0 0;
+}
+.%type S4 {
+reserved0 0:24:8 32;
+action_id 0:16:8 32;
+dbg_flags 0:8:8 32;
+actdata_cnt 0:0:8 32;
+}
+.%type I4
+.%type P2 34
+.%type S8 pif_action_actiondata_ingress__act{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P6 36
+.%type S8 pif_parrep_ctldata{
+valid 0:31:1 0;
+t0_valid 0:30:1 0;
+t0_dirty 0:29:1 0;
+t0_orig_len 0:28:1 0;
+t1_valid 0:27:1 0;
+t1_dirty 0:26:1 0;
+t1_orig_len 0:25:1 0;
+t2_valid 0:24:1 0;
+t2_dirty 0:23:1 0;
+t2_orig_len 0:22:1 0;
+t3_valid 0:21:1 0;
+t3_dirty 0:20:1 0;
+t3_orig_len 0:19:1 0;
+t4_valid 0:18:1 0;
+t4_dirty 0:17:1 0;
+t4_orig_len 0:16:1 0;
+t5_valid 0:15:1 0;
+t5_dirty 0:14:1 0;
+t5_orig_len 0:13:1 0;
+t6_valid 0:12:1 0;
+t6_dirty 0:11:1 0;
+t6_orig_len 0:10:1 0;
+t7_valid 0:9:1 0;
+t7_type 0:8:1 0;
+t7_dirty 0:7:1 0;
+t7_orig_len 0:2:5 0;
+_padding_0 0:0:2 0;
+t8_valid 4:31:1 0;
+t8_dirty 4:30:1 0;
+t8_orig_len 4:29:1 0;
+t9_valid 4:28:1 0;
+t9_dirty 4:27:1 0;
+t9_orig_len 4:26:1 0;
+t10_valid 4:25:1 0;
+t10_dirty 4:24:1 0;
+t10_orig_len 4:23:1 0;
+t11_valid 4:22:1 0;
+t11_dirty 4:21:1 0;
+t11_orig_len 4:20:1 0;
+t12_valid 4:19:1 0;
+t12_dirty 4:18:1 0;
+t12_orig_len 4:17:1 0;
+t13_valid 4:16:1 0;
+t13_dirty 4:15:1 0;
+t13_orig_len 4:14:1 0;
+t14_valid 4:13:1 0;
+t14_dirty 4:12:1 0;
+t14_orig_len 4:11:1 0;
+t15_valid 4:10:1 0;
+t15_dirty 4:9:1 0;
+t15_orig_len 4:8:1 0;
+t16_valid 4:7:1 0;
+t16_dirty 4:6:1 0;
+t16_orig_len 4:5:1 0;
+t17_valid 4:4:1 0;
+t17_dirty 4:3:1 0;
+t17_orig_len 4:2:1 0;
+}
+.%type P6 38
+.%type S36 pif_header_switch_local{
+switch_id 0:16:16 0;
+port_in 0:0:16 0;
+port_out 4:16:16 0;
+shimINTlength 4:0:16 0;
+instruction 8:24:8 0;
+ingresststamp 8:0:24 0;
+__ingresststamp_1 12:0:32 0;
+__ingresststamp_2 16:24:8 0;
+egresststamp 16:0:24 0;
+__egresststamp_1 20:0:32 0;
+__egresststamp_2 24:24:8 0;
+ingressbyte 24:0:24 0;
+__ingressbyte_1 28:24:8 0;
+ingresspackage 28:0:24 0;
+__ingresspackage_1 32:24:8 0;
+}
+.%type P6 40
+.%type S16 pif_header_intrinsic_metadata{
+ingress_global_tstamp 0:0:32 0;
+__ingress_global_tstamp_1 4:0:32 0;
+current_global_tstamp 8:0:32 0;
+__current_global_tstamp_1 12:0:32 0;
+}
+.%type P2 42
+.%type S8 pif_action_actiondata_egress__action_eq192{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P6 44
+.%type S4 pif_header_int_ingress_egress_ports{
+int_ingress_id 0:16:16 0;
+int_egress_id 0:0:16 0;
+}
+.%type P6 46
+.%type S20 pif_header_ipv4{
+version 0:28:4 0;
+headerLength 0:24:4 0;
+typeServiceDiffServ 0:16:8 0;
+totalLength 0:0:16 0;
+identification 4:16:16 0;
+fragmentOffset 4:0:16 0;
+timeToLive 8:24:8 0;
+protocol 8:16:8 0;
+headerChecksum 8:0:16 0;
+sourceAddress 12:0:32 0;
+destinationAddress 16:0:32 0;
+}
+.%type P6 48
+.%type S8 pif_header_hopINT{
+int_version 0:24:8 0;
+int_replication 0:16:8 0;
+int_copy 0:15:1 0;
+int_exceeded 0:14:1 0;
+int_rsvd_1 0:6:8 0;
+int_ins_cnt 0:0:6 0;
+__int_ins_cnt_1 4:30:2 0;
+int_max_hops 4:22:8 0;
+int_total_hops 4:14:8 0;
+int_instruction_bit 4:6:8 0;
+int_rsvd_instructions 4:0:6 0;
+}
+.%type P6 50
+.%type S4 pif_header_shimINT{
+shim_type 0:24:8 0;
+shim_reserved1 0:16:8 0;
+shim_length 0:8:8 0;
+shim_rsvd2 0:0:8 0;
+}
+.%type P6 52
+.%type S4 pif_header_switch_id{
+int_switch_id 0:0:32 0;
+}
+.%type P2 54
+.%type S20 pif_action_actiondata_ingress__send_telemetry_report{
+monitor_mac_1 0 0;
+monitor_ip 4 0;
+__pif_rule_no 8 0;
+__pif_table_no 12 0;
+monitor_port 16 26;
+monitor_mac_0 18 26;
+}
+.%type P6 56
+.%type S16 pif_header_ethernet{
+destinationAddress 0:0:32 0;
+__destinationAddress_1 4:16:16 0;
+sourceAddress 4:0:16 0;
+__sourceAddress_1 8:0:32 0;
+etherType 12:16:16 0;
+}
+.%type P6 58
+.%type S8 pif_header_udp{
+sourcePort 0:16:16 0;
+destinationPort 0:0:16 0;
+lengthUDP 4:16:16 0;
+checksum 4:0:16 0;
+}
+.%type P6 60
+.%type S20 pif_header_report_ipv4{
+version 0:28:4 0;
+headerLength 0:24:4 0;
+typeServiceDiffServ 0:16:8 0;
+totalLength 0:0:16 0;
+identification 4:16:16 0;
+fragmentOffset 4:0:16 0;
+timeToLive 8:24:8 0;
+protocol 8:16:8 0;
+headerChecksum 8:0:16 0;
+sourceAddress 12:0:32 0;
+destinationAddress 16:0:32 0;
+}
+.%type P6 62
+.%type S16 pif_header_report{
+f_version 0:24:8 0;
+f_next_proto 0:16:8 0;
+f_drop 0:15:1 0;
+f_queue 0:14:1 0;
+f_flow 0:13:1 0;
+f_rsvd 0:8:5 0;
+f_hw_id 0:0:8 0;
+f_seq_num 4:0:32 0;
+f_ingress_ts 8:0:32 0;
+__f_ingress_ts_1 12:0:32 0;
+}
+.%type P6 64
+.%type S8 pif_header_report_udp{
+sourcePort 0:16:16 0;
+destinationPort 0:0:16 0;
+lengthUDP 4:16:16 0;
+checksum 4:0:16 0;
+}
+.%type P6 66
+.%type S16 pif_header_standard_metadata{
+clone_spec 0:0:32 0;
+egress_spec 4:16:16 0;
+egress_port 4:0:16 0;
+ingress_port 8:16:16 0;
+packet_length 8:2:14 0;
+checksum_error 8:1:1 0;
+_padding_0 8:0:1 0;
+egress_instance 12:22:10 0;
+parser_error_location 12:14:8 0;
+instance_type 12:10:4 0;
+parser_status 12:7:3 0;
+_padding_1 12:0:7 0;
+}
+.%type P6 68
+.%type S16 pif_header_report_ethernet{
+destinationAddress 0:0:32 0;
+__destinationAddress_1 4:16:16 0;
+sourceAddress 4:0:16 0;
+__sourceAddress_1 8:0:32 0;
+etherType 12:16:16 0;
+}
+.%type P2 70
+.%type S8 pif_action_actiondata_ingress__act_0{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P6 72
+.%type S24 pif_header_ingress__scalars{
+tmp_0 0:0:32 0;
+tmp_1 4:0:32 0;
+tmp_2 8:0:32 0;
+tmp_3 12:0:32 0;
+tmp_4 16:0:32 0;
+tmp 20:0:32 0;
+}
+.%type A4 0
+.%type P3 21
+.%type A4 0
+.%type A4 0
+.%type P3 19
+.%type A4 0
+.%type P2 80
+.%type S8 pif_action_actiondata_ingress__act_1{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type A4 0
+.%type A4 0
+.%type P2 84
+.%type S24 pif_action_actiondata_ingress__arp_forward{
+dstmac_1 0 0;
+srcmac_1 4 0;
+__pif_rule_no 8 0;
+__pif_table_no 12 0;
+srcmac_0 16 26;
+dstmac_0 18 26;
+__pif_padding 20 85;
+espec 22 26;
+}
+.%type A2 4
+.%type P2 87
+.%type S8 pif_action_actiondata_egress__action_eq128{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 89
+.%type S8 pif_action_actiondata_ingress__drop{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 91
+.%type S8 pif_action_actiondata_egress__action_eq184{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P6 93
+.%type S8 pif_header_egressTimestamp{
+int_egressTimestamp 0:0:32 0;
+__int_egressTimestamp_1 4:0:32 0;
+}
+.%type P6 95
+.%type S8 pif_header_hop_latency{
+int_hop_latency 0:0:32 0;
+__int_hop_latency_1 4:0:32 0;
+}
+.%type P6 97
+.%type S8 pif_header_ingressTimestamp{
+int_ingressTimestamp 0:0:32 0;
+__int_ingressTimestamp_1 4:0:32 0;
+}
+.%type S8 mac_time_data{
+sec 0 0;
+nsec 4 0;
+}
+.%type P2 100
+.%type S8 pif_action_actiondata_egress__action_eq240{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 102
+.%type S8 pif_action_actiondata_egress__action_eq88{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 104
+.%type S24 pif_action_actiondata_ingress__ipv4_forward{
+dstmac_1 0 0;
+srcmac_1 4 0;
+__pif_rule_no 8 0;
+__pif_table_no 12 0;
+srcmac_0 16 26;
+dstmac_0 18 26;
+__pif_padding 20 105;
+espec 22 26;
+}
+.%type A2 4
+.%type P2 107
+.%type S8 pif_action_actiondata_egress__action_eq254{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P6 109
+.%type S4 pif_header_countpackage{
+int_ingresscountpackage 0:0:32 0;
+}
+.%type P6 111
+.%type S4 pif_header_bytepackage{
+int_bytepackageingress 0:0:32 0;
+}
+.%type P2 113
+.%type S8 pif_action_actiondata_egress__action_eq248{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 115
+.%type S8 pif_action_actiondata_egress__action_eq160{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 117
+.%type S8 pif_action_actiondata_egress__action_eq224{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type P2 119
+.%type S8 pif_action_actiondata_egress__action_eq252{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}

@@ -1,0 +1,320 @@
+.%scope file "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\apps\pif_app_nfd\include\config.h"
+.%scope function multiply_24x8 _multiply_24x8 "C:\NFP_SDK_6.1.0-preview\p4\components\nfp_pif\me\lib\pif\include\pif_common.h" 62 77
+.%arg x 0 x_333_V$571
+.%arg y 0 y_333_V$572
+.%var result 0 result_333 LIX
+.%scope end
+.%var BLM_NBI8_BLQ0_EMU_QD_BASE 1 _BLM_NBI8_BLQ0_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_Q_BASE 3 _BLM_NBI8_BLQ0_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_QD_BASE 4 _BLM_NBI8_BLQ1_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ1_EMU_Q_BASE 5 _BLM_NBI8_BLQ1_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_QD_BASE 6 _BLM_NBI8_BLQ2_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ2_EMU_Q_BASE 7 _BLM_NBI8_BLQ2_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_QD_BASE 8 _BLM_NBI8_BLQ3_EMU_QD_BASE SEX
+.%var BLM_NBI8_BLQ3_EMU_Q_BASE 9 _BLM_NBI8_BLQ3_EMU_Q_BASE SEX
+.%var BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE 10 _BLM_NBI8_BLQ0_EMU_EMEM0_BUFS_BASE SEX
+.%var BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE 11 _BLM_NBI8_BLQ0_BDSRAM_EMEM0_BUFS_BASE SEX
+.%var parrep 12 _parrep SEX
+.%scope function handle_ingress_flow__condition_4 _handle_ingress_flow__condition_4 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 12 43
+.%arg _pif_parrep 13 _pif_parrep_335_V$575
+.%var pif_expression__condition_4_register_0 0 pif_expression__condition_4_register_0_335 LIX
+.%var ipv4 14 ipv4_335 LIX
+.%scope block 24 37
+.%var pif_expression__condition_4_register_1 0 pif_expression__condition_4_register_1_336 LIX
+.%var pif_expression__condition_4_register_2 0 pif_expression__condition_4_register_2_336 LIX
+.%var pif_expression__condition_4_register_3 0 pif_expression__condition_4_register_3_336 LIX
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow_ingress__arp_lpm _handle_ingress_flow_ingress__arp_lpm "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 45 76
+.%arg _pif_parrep 13 _pif_parrep_337_V$57e
+.%arg actbuf 16 actbuf_337_V$57f
+.%arg actbuf_off 0 actbuf_off_337_V$580
+.%arg actlen 17 actlen_337_V$581
+.%arg state 17 state_337_V$582
+.%var action_id 18 action_id_337 LIX
+.%var ret 18 ret_337 LIX
+.%var next_state 18 next_state_337 LIX
+.%scope block 54 59
+.%var result 19 result_338 LIX
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow__condition_3 _handle_ingress_flow__condition_3 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 78 97
+.%arg _pif_parrep 13 _pif_parrep_340_V$58c
+.%var pif_expression__condition_3_register_0 0 pif_expression__condition_3_register_0_340 LIX
+.%var prdata 21 prdata_340 LIX
+.%scope end
+.%scope function handle_ingress_flow_ingress__tbl_act_0 _handle_ingress_flow_ingress__tbl_act_0 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 99 141
+.%arg _pif_parrep 13 _pif_parrep_342_V$591
+.%arg actbuf 16 actbuf_342_V$592
+.%arg actbuf_off 0 actbuf_off_342_V$593
+.%arg actlen 17 actlen_342_V$594
+.%arg state 17 state_342_V$595
+.%var action_id 18 action_id_342 LIX
+.%var ret 18 ret_342 LIX
+.%var next_state 18 next_state_342 LIX
+.%scope block 108 124
+.%var actdata 23 actdata_343 LIX
+.%var wr_buf 24 wr_buf_343 LIW
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow__condition_2 _handle_ingress_flow__condition_2 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 143 174
+.%arg _pif_parrep 13 _pif_parrep_346_V$5aa
+.%var pif_expression__condition_2_register_0 0 pif_expression__condition_2_register_0_346 LIX
+.%var ipv4 14 ipv4_346 LIX
+.%scope block 155 168
+.%var pif_expression__condition_2_register_1 0 pif_expression__condition_2_register_1_347 LIX
+.%var pif_expression__condition_2_register_2 0 pif_expression__condition_2_register_2_347 LIX
+.%var pif_expression__condition_2_register_3 0 pif_expression__condition_2_register_3_347 LIX
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow_ingress__process_int_report _handle_ingress_flow_ingress__process_int_report "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 176 207
+.%arg _pif_parrep 13 _pif_parrep_348_V$5b2
+.%arg actbuf 16 actbuf_348_V$5b3
+.%arg actbuf_off 0 actbuf_off_348_V$5b4
+.%arg actlen 17 actlen_348_V$5b5
+.%arg state 17 state_348_V$5b6
+.%var action_id 18 action_id_348 LIX
+.%var ret 18 ret_348 LIX
+.%var next_state 18 next_state_348 LIX
+.%scope block 185 190
+.%var result 19 result_349 LIX
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow_ingress__ipv4_lpm _handle_ingress_flow_ingress__ipv4_lpm "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 209 240
+.%arg _pif_parrep 13 _pif_parrep_351_V$5c0
+.%arg actbuf 16 actbuf_351_V$5c1
+.%arg actbuf_off 0 actbuf_off_351_V$5c2
+.%arg actlen 17 actlen_351_V$5c3
+.%arg state 17 state_351_V$5c4
+.%var action_id 18 action_id_351 LIX
+.%var ret 18 ret_351 LIX
+.%var next_state 18 next_state_351 LIX
+.%scope block 218 223
+.%var result 19 result_352 LIX
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow_ingress__tbl_act_1 _handle_ingress_flow_ingress__tbl_act_1 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 242 284
+.%arg _pif_parrep 13 _pif_parrep_354_V$5ce
+.%arg actbuf 16 actbuf_354_V$5cf
+.%arg actbuf_off 0 actbuf_off_354_V$5d0
+.%arg actlen 17 actlen_354_V$5d1
+.%arg state 17 state_354_V$5d2
+.%var action_id 18 action_id_354 LIX
+.%var ret 18 ret_354 LIX
+.%var next_state 18 next_state_354 LIX
+.%scope block 251 267
+.%var actdata 27 actdata_355 LIX
+.%var wr_buf 28 wr_buf_355 LIW
+.%scope end
+.%scope end
+.%scope function handle_ingress_flow__condition_0 _handle_ingress_flow__condition_0 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 286 305
+.%arg _pif_parrep 13 _pif_parrep_358_V$5e6
+.%var pif_expression__condition_0_register_0 0 pif_expression__condition_0_register_0_358 LIX
+.%var prdata 21 prdata_358 LIX
+.%scope end
+.%scope function handle_ingress_flow__condition_1 _handle_ingress_flow__condition_1 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 307 326
+.%arg _pif_parrep 13 _pif_parrep_360_V$5eb
+.%var pif_expression__condition_1_register_0 0 pif_expression__condition_1_register_0_360 LIX
+.%var prdata 21 prdata_360 LIX
+.%scope end
+.%scope function handle_ingress_flow_ingress__tbl_act _handle_ingress_flow_ingress__tbl_act "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 328 370
+.%arg _pif_parrep 13 _pif_parrep_362_V$5f0
+.%arg actbuf 16 actbuf_362_V$5f1
+.%arg actbuf_off 0 actbuf_off_362_V$5f2
+.%arg actlen 17 actlen_362_V$5f3
+.%arg state 17 state_362_V$5f4
+.%var action_id 18 action_id_362 LIX
+.%var ret 18 ret_362 LIX
+.%var next_state 18 next_state_362 LIX
+.%scope block 337 353
+.%var actdata 29 actdata_363 LIX
+.%var wr_buf 30 wr_buf_363 LIW
+.%scope end
+.%scope end
+.%scope function pif_ctlflow_ingress_flow _pif_ctlflow_ingress_flow "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 374 429
+.%arg start_state 17 start_state_366_V$608
+.%arg _pif_parrep 13 _pif_parrep_366_V$609
+.%arg actbuf 16 actbuf_366_V$60a
+.%arg actbuf_off 0 actbuf_off_366_V$60b
+.%var actlen 18 actlen_366 LIX
+.%var totlen 18 totlen_366 LIX
+.%var ret 18 ret_366 LIX
+.%var pif_ctlflow_state_ingress_flow 18 pif_ctlflow_state_ingress_flow_366 LIX
+.%scope end
+.%scope function handle_egress_flow__condition_5 _handle_egress_flow__condition_5 "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 437 468
+.%arg _pif_parrep 13 _pif_parrep_370_V$613
+.%var pif_expression__condition_5_register_0 0 pif_expression__condition_5_register_0_370 LIX
+.%var report_ipv4 31 report_ipv4_370 LIX
+.%scope block 449 462
+.%var pif_expression__condition_5_register_1 0 pif_expression__condition_5_register_1_371 LIX
+.%var pif_expression__condition_5_register_2 0 pif_expression__condition_5_register_2_371 LIX
+.%var pif_expression__condition_5_register_3 0 pif_expression__condition_5_register_3_371 LIX
+.%scope end
+.%scope end
+.%scope function handle_egress_flow_egress__add_metadata _handle_egress_flow_egress__add_metadata "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 470 501
+.%arg _pif_parrep 13 _pif_parrep_372_V$61c
+.%arg actbuf 16 actbuf_372_V$61d
+.%arg actbuf_off 0 actbuf_off_372_V$61e
+.%arg actlen 17 actlen_372_V$61f
+.%arg state 17 state_372_V$620
+.%var action_id 18 action_id_372 LIX
+.%var ret 18 ret_372 LIX
+.%var next_state 18 next_state_372 LIX
+.%scope block 479 484
+.%var result 19 result_373 LIX
+.%scope end
+.%scope end
+.%scope function pif_ctlflow_egress_flow _pif_ctlflow_egress_flow "C:\Users\P4\NFP_SDK\switch_INT02_with_demand\out\pif_ctlflow.c" 505 533
+.%arg start_state 17 start_state_375_V$62a
+.%arg _pif_parrep 13 _pif_parrep_375_V$62b
+.%arg actbuf 16 actbuf_375_V$62c
+.%arg actbuf_off 0 actbuf_off_375_V$62d
+.%var actlen 18 actlen_375 LIX
+.%var totlen 18 totlen_375 LIX
+.%var ret 18 ret_375 LIX
+.%var pif_ctlflow_state_egress_flow 18 pif_ctlflow_state_egress_flow_375 LIX
+.%scope end
+.%type U4
+.%type A16 2
+.%type U1
+.%type A32768 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A16 2
+.%type A2048 2
+.%type A41943040 2
+.%type A10485760 2
+.%type A308 0
+.%type P6 0
+.%type P6 15
+.%type S20 pif_header_ipv4{
+version 0:28:4 0;
+headerLength 0:24:4 0;
+typeServiceDiffServ 0:16:8 0;
+totalLength 0:0:16 0;
+identification 4:16:16 0;
+fragmentOffset 4:0:16 0;
+timeToLive 8:24:8 0;
+protocol 8:16:8 0;
+headerChecksum 8:0:16 0;
+sourceAddress 12:0:32 0;
+destinationAddress 16:0:32 0;
+}
+.%type P3 0
+.%type P2 18
+.%type I4
+.%type S8 pif_lookup_result{
+action_id 0 20;
+action_len 4 20;
+}
+.%type I4
+.%type P6 22
+.%type S8 pif_parrep_ctldata{
+valid 0:31:1 0;
+t0_valid 0:30:1 0;
+t0_dirty 0:29:1 0;
+t0_orig_len 0:28:1 0;
+t1_valid 0:27:1 0;
+t1_dirty 0:26:1 0;
+t1_orig_len 0:25:1 0;
+t2_valid 0:24:1 0;
+t2_dirty 0:23:1 0;
+t2_orig_len 0:22:1 0;
+t3_valid 0:21:1 0;
+t3_dirty 0:20:1 0;
+t3_orig_len 0:19:1 0;
+t4_valid 0:18:1 0;
+t4_dirty 0:17:1 0;
+t4_orig_len 0:16:1 0;
+t5_valid 0:15:1 0;
+t5_dirty 0:14:1 0;
+t5_orig_len 0:13:1 0;
+t6_valid 0:12:1 0;
+t6_dirty 0:11:1 0;
+t6_orig_len 0:10:1 0;
+t7_valid 0:9:1 0;
+t7_type 0:8:1 0;
+t7_dirty 0:7:1 0;
+t7_orig_len 0:2:5 0;
+_padding_0 0:0:2 0;
+t8_valid 4:31:1 0;
+t8_dirty 4:30:1 0;
+t8_orig_len 4:29:1 0;
+t9_valid 4:28:1 0;
+t9_dirty 4:27:1 0;
+t9_orig_len 4:26:1 0;
+t10_valid 4:25:1 0;
+t10_dirty 4:24:1 0;
+t10_orig_len 4:23:1 0;
+t11_valid 4:22:1 0;
+t11_dirty 4:21:1 0;
+t11_orig_len 4:20:1 0;
+t12_valid 4:19:1 0;
+t12_dirty 4:18:1 0;
+t12_orig_len 4:17:1 0;
+t13_valid 4:16:1 0;
+t13_dirty 4:15:1 0;
+t13_orig_len 4:14:1 0;
+t14_valid 4:13:1 0;
+t14_dirty 4:12:1 0;
+t14_orig_len 4:11:1 0;
+t15_valid 4:10:1 0;
+t15_dirty 4:9:1 0;
+t15_orig_len 4:8:1 0;
+t16_valid 4:7:1 0;
+t16_dirty 4:6:1 0;
+t16_orig_len 4:5:1 0;
+t17_valid 4:4:1 0;
+t17_dirty 4:3:1 0;
+t17_orig_len 4:2:1 0;
+}
+.%type S8 pif_action_actiondata_ingress__act_0{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type S12 {
+opdata 0 25;
+actdata 4 23;
+}
+.%type S4 pif_action_opdata{
+__unnamed 0 26;
+val32 0 0;
+}
+.%type S4 {
+reserved0 0:24:8 18;
+action_id 0:16:8 18;
+dbg_flags 0:8:8 18;
+actdata_cnt 0:0:8 18;
+}
+.%type S8 pif_action_actiondata_ingress__act_1{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type S12 {
+opdata 0 25;
+actdata 4 27;
+}
+.%type S8 pif_action_actiondata_ingress__act{
+__pif_rule_no 0 0;
+__pif_table_no 4 0;
+}
+.%type S12 {
+opdata 0 25;
+actdata 4 29;
+}
+.%type P6 32
+.%type S20 pif_header_report_ipv4{
+version 0:28:4 0;
+headerLength 0:24:4 0;
+typeServiceDiffServ 0:16:8 0;
+totalLength 0:0:16 0;
+identification 4:16:16 0;
+fragmentOffset 4:0:16 0;
+timeToLive 8:24:8 0;
+protocol 8:16:8 0;
+headerChecksum 8:0:16 0;
+sourceAddress 12:0:32 0;
+destinationAddress 16:0:32 0;
+}
